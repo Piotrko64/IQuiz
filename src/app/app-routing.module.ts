@@ -1,10 +1,19 @@
+import { StartComponent } from './pages/start/start.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { QuizOneComponent } from './pages/quiz-one/quiz-one.component';
+const routes: Routes = [
+  { path: '', component: StartComponent },
+  { path: 'hello', component: QuizOneComponent },
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes, {
+      initialNavigation: 'enabledBlocking',
+    }),
+  ],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

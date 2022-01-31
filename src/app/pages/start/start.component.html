@@ -1,0 +1,24 @@
+<header class="header" (mousemove)="move($event)">
+  <div class="header__title">
+    <span class="header__span" [style.text-shadow]="textShadow">IQ</span>uiz
+  </div>
+  <div class="header__buttons">
+    <button
+      class="header__button"
+      [routerLink]="['/hello']"
+      routerLinkActive="router-link-active"
+    >
+      Search Quiz
+      <br />
+      <mat-icon>search</mat-icon></button
+    ><button class="header__button">
+      Quick Quiz
+      <br />
+      <mat-icon>flash_on</mat-icon></button
+    ><button class="header__button">
+      Create Quiz<br />
+      <mat-icon>create</mat-icon>
+    </button>
+  </div>
+</header>
+<app-list></app-list>
