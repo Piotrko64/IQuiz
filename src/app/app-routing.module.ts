@@ -1,15 +1,16 @@
 import { StartComponent } from './pages/start/start.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { QuizOneComponent } from './pages/quiz-one/quiz-one.component';
+import { CommonModule } from '@angular/common';
+import { QuizOneComponent } from './quiz-one/quiz-one.component';
 const routes: Routes = [
   { path: '', component: StartComponent },
-  { path: 'quiz-one', component: QuizOneComponent },
+  { path: 'quiz-one/1', component: QuizOneComponent },
 ];
 
 @NgModule({
   imports: [
+    CommonModule,
     RouterModule.forRoot(routes, {
       initialNavigation: 'enabledBlocking',
     }),
