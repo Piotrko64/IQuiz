@@ -9,7 +9,7 @@ export const quizzes: Array<Quiz> = [
         'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png',
       describe: 'Simple quiz for beginner front-end developers',
       date: '1/6/2022',
-      levelDifficulty: 2,
+      levelDifficulty: 'medium',
     },
     questions: [
       {

@@ -11,7 +11,7 @@ interface Meta {
   image?: string;
   describe?: string;
   date: string;
-  levelDifficulty: 1 | 2 | 3;
+  levelDifficulty: 'easy' | 'medium' | 'hard';
 }
 interface Questions {
   question: string;

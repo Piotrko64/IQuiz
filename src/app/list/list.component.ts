@@ -9,6 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent {
   constructor() {}
-
+  coloring = {
+    easy: 'red',
+    medium: 'orange',
+    hard: 'red',
+  };
   List: Array<Quiz> = quizzes;
 }

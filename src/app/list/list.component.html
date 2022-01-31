@@ -1,5 +1,41 @@
-<div *ngFor="let el of List">
-  {{ el.meta.title }}
-  aaaaaaaaaa
-</div>
-aaaaaaa
+<article class="article">
+  <article class="article__for" *ngFor="let el of List">
+    <img src="{{ el.meta.image }}" alt="" />
+    <div class="article__describe">
+      <h1>
+        {{ el.meta.title }} by
+        <span class="article__author">{{ el.meta.author }}</span>
+      </h1>
+      <span class="article__data">
+        {{ el.meta.date }}
+        <!-- Coloring -->
+        <span
+          *ngIf="el.meta.levelDifficulty === 'easy'"
+          [style.color]="coloring.easy"
+          >easy quiz!</span
+        >
+        <span
+          *ngIf="el.meta.levelDifficulty === 'medium'"
+          [style.color]="coloring.medium"
+          >medium level of difficult</span
+        >
+        <span
+          *ngIf="el.meta.levelDifficulty === 'hard'"
+          [style.color]="coloring.hard"
+          >Demanding quiz!</span
+        >
+        Rate: {{ el.rating[0].rate }}/5
+      </span>
+
+      <p>
+        {{ el.meta.describe }}
+        <br />
+      </p>
+
+      <div class="article__buttons">
+        <button>Play!</button><button>See ratings</button
+        ><button>Score board</button>
+      </div>
+    </div>
+  </article>
+</article>
