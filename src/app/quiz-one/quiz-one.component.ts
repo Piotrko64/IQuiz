@@ -1,6 +1,8 @@
-import { quizzes } from '../data/examples-quiz';
-import { Quiz } from 'src/app/data/data-type';
+import { quizzes } from './../data/examples-quiz';
+
+import { Questions } from 'src/app/data/data-type';
 import { Component, OnInit } from '@angular/core';
+import { reduce } from 'rxjs';
 
 @Component({
   selector: 'app-quiz-one',
@@ -8,9 +10,52 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./quiz-one.component.less'],
 })
 export class QuizOneComponent implements OnInit {
-  List: Quiz = quizzes[0];
-
+  List: Array<Questions> = quizzes[0].questions;
+  quizMeta = quizzes[0].meta;
+  arrayAnswers: Array<string> = [];
+  arrayCorrect: Array<string> = [];
+  arrayChecking: Array<string | boolean> = [];
+  Counting: number = 0;
   constructor() {}
-
-  ngOnInit(): void {}
+  // PUSH TO ARRAY
+  push(ans: string, i: number) {
+    this.arrayAnswers[i] = ans;
+    // console.log(this.List.length);
+  }
+  //Function to create array with
+  correct() {
+    for (let i = 0; i < this.List.length; i++) {
+      const newPush = this.List[i].correct;
+      this.arrayCorrect.push(newPush);
+    }
+    return this.arrayCorrect;
+  }
+  // Check good answers and counting point
+  Check() {
+    this.correct();
+    for (let j = 0; j < this.List.length; j++) {
+      if (this.arrayAnswers[j] === this.arrayCorrect[j]) {
+        this.Counting++;
+      } else {
+        console.log('No! Good answer is ' + this.arrayCorrect[j]);
+      }
+    }
+    console.log('pkt', this.Counting);
+  }
+  // Coloring good and bad answer
+  getColor(btn: string, answer: string, correct: string): any {
+    if (btn === correct) {
+      return 'green';
+    }
+    if (btn === answer && btn !== correct && correct !== undefined) {
+      console.log(correct);
+      return 'red';
+    }
+    if (btn === answer) {
+      return '#d9008f';
+    }
+  }
+  ngOnInit(): void {
+    // Array with good answers
+  }
 }

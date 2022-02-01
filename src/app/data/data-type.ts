@@ -13,7 +13,7 @@ interface Meta {
   date: string;
   levelDifficulty: 'easy' | 'medium' | 'hard';
 }
-interface Questions {
+export interface Questions {
   question: string;
   image?: string;
   answers: Array<string>;

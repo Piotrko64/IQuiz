@@ -9,7 +9,7 @@ export const quizzes: Array<Quiz> = [
         'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png',
       describe: 'Simple quiz for beginner front-end developers',
       date: '1/6/2022',
-      levelDifficulty: 'medium',
+      levelDifficulty: 'easy',
     },
     questions: [
       {
@@ -19,6 +19,8 @@ export const quizzes: Array<Quiz> = [
       },
       {
         question: 'What notation can be used angular interpolation?',
+        image:
+          'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/800px-Angular_full_color_logo.svg.png',
         answers: [
           '[(interpolation)]',
           '{{interpolation}}',

@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class ListComponent {
   constructor() {}
   coloring = {
-    easy: 'red',
+    easy: 'yellow',
     medium: 'orange',
     hard: 'red',
   };

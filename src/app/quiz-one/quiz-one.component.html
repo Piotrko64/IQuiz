@@ -1,3 +1,33 @@
-<div class="quiz" *ngif="List === []">
-  <h1>aaaaaaaaaaa</h1>
-</div>
+<section class="quiz">
+  <header>
+    <img src="{{ quizMeta.image }}" alt="{{ quizMeta.describe }}" />
+    <div class="quiz__describe">
+      <h1>{{ quizMeta.title }}</h1>
+      {{ quizMeta.describe }}
+    </div>
+  </header>
+  <div class="quiz__content">
+    <div
+      class="quiz__question"
+      *ngFor="let el of List; let i = index"
+      [ngStyle]="{
+        background: i % 2 === 0 ? 'black' : 'rgb(42 39 42)'
+      }"
+    >
+      <h1>{{ el.question }}</h1>
+      <img *ngIf="el.image" src="{{ el.image }}" alt="" />
+      <div class="quiz__buttons">
+        <button
+          *ngFor="let btn of el.answers"
+          (click)="push(btn, i)"
+          [ngStyle]="{
+            'background-color': getColor(btn, arrayAnswers[i], arrayCorrect[i])
+          }"
+        >
+          {{ btn }}
+        </button>
+      </div>
+    </div>
+  </div>
+  <button (click)="Check()">Checking</button>
+</section>
