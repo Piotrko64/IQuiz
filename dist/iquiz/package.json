@@ -1,0 +1,12 @@
+{
+    "name": "iquiz",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node dist/iquiz/server/main.js"
+    },
+    "author": "",
+    "license": "ISC"
+}
