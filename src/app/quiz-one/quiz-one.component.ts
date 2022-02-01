@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
   encapsulation: ViewEncapsulation.None,
 })
 export class QuizOneComponent implements OnInit {
-  List: Array<Questions> = quizzes[0].questions;
+  List: Array<Questions> = quizzes[1].questions;
   quizMeta = quizzes[0].meta;
   arrayAnswers: Array<string> = [];
   arrayCorrect: Array<string> = [];

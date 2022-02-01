@@ -9,8 +9,8 @@ import { ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None,
 })
 export class GoQuizComponent implements OnInit {
-  List: Array<Questions> = quizzes[0].questions;
-  quizMeta = quizzes[0].meta;
+  List: Array<Questions> = quizzes[1].questions;
+  quizMeta = quizzes[1].meta;
   playActive = false;
   constructor() {}
 

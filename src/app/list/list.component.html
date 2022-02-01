@@ -1,5 +1,5 @@
 <article class="article">
-  <article class="article__for" *ngFor="let el of List">
+  <article class="article__for" *ngFor="let el of List; let i = index">
     <img src="{{ el.meta.image }}" alt="" />
     <div class="article__describe">
       <h1>
@@ -40,7 +40,7 @@
 
       <div class="article__buttons">
         <button
-          [routerLink]="['./quiz-one/1']"
+          [routerLink]="['./quiz-one/2']"
           routerLinkActive="router-link-active"
         >
           Play!</button
