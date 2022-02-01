@@ -1,0 +1,14 @@
+<section class="quiz">
+  <header>
+    <img src="{{ quizMeta.image }}" alt="{{ quizMeta.describe }}" />
+    <div class="quiz__describe">
+      <h1>{{ quizMeta.title }}</h1>
+      created by <span>{{ quizMeta.author }} </span><br />
+      {{ quizMeta.describe }}
+      <br />
+      <button (click)="playActive = true">Play!</button>
+    </div>
+  </header>
+
+  <app-quiz-one *ngIf="playActive"></app-quiz-one>
+</section>

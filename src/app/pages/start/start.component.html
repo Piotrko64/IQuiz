@@ -3,15 +3,15 @@
     <span class="header__span" [style.text-shadow]="textShadow">IQ</span>uiz
   </div>
   <div class="header__buttons">
-    <button
+    <button class="header__button">
+      Search Quiz
+      <br />
+      <mat-icon>search</mat-icon></button
+    ><button
       class="header__button"
       [routerLink]="['./quiz-one/1']"
       routerLinkActive="router-link-active"
     >
-      Search Quiz
-      <br />
-      <mat-icon>search</mat-icon></button
-    ><button class="header__button">
       Quick Quiz
       <br />
       <mat-icon>flash_on</mat-icon></button

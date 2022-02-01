@@ -19,10 +19,10 @@ export interface Questions {
   answers: Array<string>;
   correct: string;
 }
-interface Rating {
+export interface Rating {
   author: string;
   comment: string;
-  rate: 1 | 2 | 3 | 4 | 5;
+  rate: number;
 }
 interface Score {
   winner: string;

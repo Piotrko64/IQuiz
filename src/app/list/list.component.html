@@ -25,7 +25,12 @@
           [style.color]="coloring.hard"
           >Demanding quiz!</span
         >
-        Rate: {{ el.rating[0].rate }}/5
+        <br />
+        <span *ngFor="let r of rate">
+          <mat-icon [ngStyle]="{ color: r - 1 < CountRate() ? 'yellow' : null }"
+            >star</mat-icon
+          ></span
+        >
       </span>
 
       <p>
@@ -34,8 +39,12 @@
       </p>
 
       <div class="article__buttons">
-        <button>Play!</button><button>See ratings</button
-        ><button>Score board</button>
+        <button
+          [routerLink]="['./quiz-one/1']"
+          routerLinkActive="router-link-active"
+        >
+          Play!</button
+        ><button>See ratings</button><button>Score board</button>
       </div>
     </div>
   </article>

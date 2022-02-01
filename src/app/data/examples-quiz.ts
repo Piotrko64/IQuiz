@@ -55,7 +55,7 @@ export const quizzes: Array<Quiz> = [
       {
         author: 'Front-Flex',
         comment: 'Well, not bad',
-        rate: 4,
+        rate: 3,
       },
       {
         author: 'FrontJS',
