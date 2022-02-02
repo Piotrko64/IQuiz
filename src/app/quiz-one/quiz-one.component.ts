@@ -16,8 +16,9 @@ export class QuizOneComponent implements OnInit {
   quizMeta = quizzes[this.id].meta;
   arrayAnswers: Array<string> = [];
   arrayCorrect: Array<string> = [];
-  arrayChecking: Array<string | boolean> = [];
   Counting: number = 0;
+  procentCounting: number = 0;
+  disabled = false;
   constructor(private route: ActivatedRoute) {}
   // PUSH TO ARRAY
   push(ans: string, i: number) {
@@ -50,6 +51,19 @@ export class QuizOneComponent implements OnInit {
     }
     return this.arrayCorrect;
   }
+  // Coloring Questions
+  coloringQue(a: string, b: string) {
+    if (this.disabled === false) {
+      return 'white';
+    }
+    if (a === b) {
+      return 'green';
+    }
+    if (a !== b) {
+      return 'red';
+    }
+    return;
+  }
   // Check good answers and counting point
   Check() {
     this.correct();
@@ -60,8 +74,41 @@ export class QuizOneComponent implements OnInit {
         console.log('No! Good answer is ' + this.arrayCorrect[j]);
       }
     }
-    console.log('pkt', this.Counting);
+    this.procentCounting = (this.Counting / this.arrayCorrect.length) * 100;
+    this.disabled = true;
+    setTimeout(() => {
+      window.scrollTo({
+        left: 0,
+        top: document.body.scrollHeight,
+        behavior: 'smooth',
+      });
+    }, 100);
+  }
+  // Notification about amount points
+  giveCount() {
+    const count = (this.Counting / this.arrayCorrect.length) * 100;
+    if (count > 80) {
+      return 'Awesome! You got ' + this.Counting + ' points!';
+    }
+    if (count > 45) {
+      return 'Not Bad! You got ' + this.Counting + ' points!';
+    }
+    if (count > 0) {
+      return 'Ooops..! You got only ' + this.Counting + ' points';
+    } else {
+      return 'Zero points!';
+    }
+  }
+  // Play again
+  again() {
+    this.arrayAnswers = [];
+    this.arrayCorrect = [];
+    this.Counting = 0;
+    this.procentCounting = 0;
+    this.disabled = false;
+    this.Reordering();
     this.SwapAns();
+    window.scrollTo(0, 0);
   }
   // Coloring good and bad answer
   getColor(btn: string, answer: string, correct: string): any {
@@ -76,11 +123,12 @@ export class QuizOneComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    // Array with good answers
-    this.Reordering();
     // Id of subpage
     this.id = this.route.snapshot.paramMap.get('id');
     this.List = quizzes[this.id].questions;
     this.quizMeta = quizzes[this.id].meta;
+
+    this.SwapAns();
+    this.Reordering();
   }
 }

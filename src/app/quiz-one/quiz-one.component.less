@@ -1,0 +1,46 @@
+@black: rgba(35, 24, 33, 1);
+@blackless: rgb(46, 46, 46);
+@favourite: #d9008f;
+@favless: rgba(217, 0, 145, 0.25);
+@white: white;
+@whiteless: rgba(255, 255, 255, 0.25);
+.quiz__buttons {
+  max-width: 800px;
+  display: flex;
+  justify-content: space-around;
+  align-items: normal;
+  padding: 40px 0;
+  margin-left: auto;
+  margin-right: auto;
+  button {
+    padding: 10px 15px;
+    background-color: @favourite;
+    color: white;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+.quiz__counting {
+  padding-top: 40px;
+
+  font-size: 3rem;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+  }
+  .color {
+    color: @favourite;
+  }
+}

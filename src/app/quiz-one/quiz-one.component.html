@@ -6,12 +6,19 @@
       background: i % 2 === 0 ? 'black' : 'rgb(42 39 42)'
     }"
   >
-    <h1>{{ el.question }}</h1>
+    <h1
+      [ngStyle]="{
+        color: coloringQue(arrayAnswers[i], arrayCorrect[i])
+      }"
+    >
+      {{ el.question }}
+    </h1>
     <img *ngIf="el.image" src="{{ el.image }}" alt="" />
     <div class="quiz__buttons">
       <button
         *ngFor="let btn of el.answers"
         (click)="push(btn, i)"
+        [disabled]="disabled"
         [ngStyle]="{
           'background-color': getColor(btn, arrayAnswers[i], arrayCorrect[i])
         }"
@@ -20,6 +27,14 @@
       </button>
     </div>
   </div>
+  <div class="quiz__counting" *ngIf="disabled">
+    <div>
+      {{ giveCount() }}
+    </div>
+    <div class="color">{{ procentCounting }} %</div>
+  </div>
+  <div class="quiz__buttons">
+    <button (click)="Check()" [disabled]="disabled">Checking</button>
+    <button (click)="again()">Play Again</button>
+  </div>
 </div>
-<button (click)="Check()">Checking</button>
-<button (click)="Reordering()">Reordering</button>
