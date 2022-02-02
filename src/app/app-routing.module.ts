@@ -6,7 +6,7 @@ import { GoQuizComponent } from './go-quiz/go-quiz.component';
 import { CreatingComponent } from './creating/creating.component';
 const routes: Routes = [
   { path: '', component: StartComponent },
-  { path: 'quiz-one/1', component: GoQuizComponent },
+  { path: 'quiz-one/:id', component: GoQuizComponent },
   { path: 'creating', component: CreatingComponent },
 ];
 

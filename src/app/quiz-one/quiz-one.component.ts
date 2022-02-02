@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { quizzes } from './../data/examples-quiz';
 import { ViewEncapsulation } from '@angular/core';
 import { Questions } from 'src/app/data/data-type';
@@ -10,13 +11,14 @@ import { Component, OnInit } from '@angular/core';
   encapsulation: ViewEncapsulation.None,
 })
 export class QuizOneComponent implements OnInit {
-  List: Array<Questions> = quizzes[1].questions;
-  quizMeta = quizzes[0].meta;
+  id: any = 1;
+  List: Array<Questions> = quizzes[this.id].questions;
+  quizMeta = quizzes[this.id].meta;
   arrayAnswers: Array<string> = [];
   arrayCorrect: Array<string> = [];
   arrayChecking: Array<string | boolean> = [];
   Counting: number = 0;
-  constructor() {}
+  constructor(private route: ActivatedRoute) {}
   // PUSH TO ARRAY
   push(ans: string, i: number) {
     this.arrayAnswers[i] = ans;
@@ -76,5 +78,9 @@ export class QuizOneComponent implements OnInit {
   ngOnInit(): void {
     // Array with good answers
     this.Reordering();
+    // Id of subpage
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.List = quizzes[this.id].questions;
+    this.quizMeta = quizzes[this.id].meta;
   }
 }

@@ -1,11 +1,10 @@
-<mat-form-field appearance="fill">
-  <mat-label>Input</mat-label>
-  <input matInput />
-</mat-form-field>
-<mat-form-field appearance="fill">
-  <mat-label>Select</mat-label>
-</mat-form-field>
-<mat-form-field appearance="fill">
-  <mat-label>Textarea</mat-label>
-  <textarea matInput></textarea>
-</mat-form-field>
+<div class="create">
+  <h1>Create Quiz</h1>
+  <form class="example-form">
+    <h2>Basic information</h2>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Nick</mat-label>
+      <input matInput #message maxlength="256" placeholder="Your Nickname" />
+    </mat-form-field>
+  </form>
+</div>
