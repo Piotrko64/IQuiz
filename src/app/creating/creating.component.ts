@@ -6,8 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./creating.component.less'],
 })
 export class CreatingComponent implements OnInit {
-  value = 'Clear';
   constructor() {}
-
+  arrayAmountQue = [1, 2, 3];
   ngOnInit(): void {}
 }

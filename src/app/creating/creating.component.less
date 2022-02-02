@@ -14,7 +14,12 @@
   /*change color of underline*/
   background-color: @favourite !important;
 }
-
+::ng-deep.mat-radio-outer-circle {
+  border-color: @favourite !important;
+}
+::ng-deep.mat-radio-label {
+  margin-right: 40px;
+}
 ::ng-deep.mat-form-field-ripple {
   /*change color of underline when focused*/
   background-color: @favourite !important;
@@ -48,5 +53,13 @@
   }
   form {
     padding-left: 10vw;
+    mat-form-field {
+    }
+
+    .create[_ngcontent-serverApp-c82]
+      form[_ngcontent-serverApp-c82]
+      mat-form-field[_ngcontent-serverApp-c82] {
+      margin-bottom: 0;
+    }
   }
 }

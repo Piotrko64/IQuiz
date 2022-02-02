@@ -6,5 +6,31 @@
       <mat-label>Nick</mat-label>
       <input matInput #message maxlength="256" placeholder="Your Nickname" />
     </mat-form-field>
+    <br />
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Title</mat-label>
+      <input
+        matInput
+        #message
+        maxlength="256"
+        placeholder="Title of your new quiz"
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>describe</mat-label>
+      <input matInput #message maxlength="256" placeholder="" />
+    </mat-form-field>
+    <br />
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Image</mat-label>
+      <input matInput #message maxlength="256" placeholder="url of image" />
+    </mat-form-field>
+    <br /><br /><br />
+    <h2>Questions</h2>
+    <p>Remember to select correct answer!</p>
+    <app-create-one-que
+      *ngFor="let q of arrayAmountQue; let i = index"
+    ></app-create-one-que>
   </form>
 </div>

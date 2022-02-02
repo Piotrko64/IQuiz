@@ -1,3 +1,4 @@
+import { CreateOneQueComponent } from './create-one-que/create-one-que.component';
 import { QuizOneComponent } from './quiz-one/quiz-one.component';
 import { ListComponent } from './list/list.component';
 import { NgModule } from '@angular/core';
@@ -13,6 +14,9 @@ import { CommonModule } from '@angular/common';
 import { CreatingComponent } from './creating/creating.component';
 import { GoQuizComponent } from './go-quiz/go-quiz.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatRadioModule } from '@angular/material/radio';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +25,7 @@ import { FormsModule } from '@angular/forms';
     QuizOneComponent,
     CreatingComponent,
     GoQuizComponent,
+    CreateOneQueComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -31,6 +36,10 @@ import { FormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
+    HttpClientModule,
+    BrowserModule,
+    MatButtonToggleModule,
+    MatRadioModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

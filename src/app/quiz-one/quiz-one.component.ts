@@ -1,16 +1,51 @@
 import { ActivatedRoute } from '@angular/router';
 import { quizzes } from './../data/examples-quiz';
-import { ViewEncapsulation } from '@angular/core';
+import { Input, ViewEncapsulation } from '@angular/core';
 import { Questions } from 'src/app/data/data-type';
 import { Component, OnInit } from '@angular/core';
-
+// Animation
+import { HostBinding } from '@angular/core';
+import {
+  trigger,
+  state,
+  keyframes,
+  style,
+  animate,
+  transition,
+  // ...
+} from '@angular/animations';
 @Component({
   selector: 'app-quiz-one',
   templateUrl: './quiz-one.component.html',
   styleUrls: ['./quiz-one.component.less'],
   encapsulation: ViewEncapsulation.None,
+  // animations: [
+  //   trigger('openClose', [
+  //     transition('closed => open', [
+  //       animate(
+  //         '4s',
+  //         keyframes([
+  //           style({ opacity: 1 }),
+  //           style({ transform: 'translate(0px)' }),
+  //         ])
+  //       ),
+  //     ]),
+  //     transition('open => closed', [
+  //       animate(
+  //         '4s',
+  //         keyframes([
+  //           style({ transform: 'translateY(300px)', offset: 0.5 }),
+  //           style({ opacity: 0, offset: 0.8 }),
+  //           style({ display: 'none', offset: 1 }),
+  //         ])
+  //       ),
+  //     ]),
+  //   ]),
+  // ],
 })
 export class QuizOneComponent implements OnInit {
+  isOpen = false;
+
   id: any = 1;
   List: Array<Questions> = quizzes[this.id].questions;
   quizMeta = quizzes[this.id].meta;

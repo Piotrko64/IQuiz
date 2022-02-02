@@ -6,6 +6,7 @@
 @whiteless: rgba(255, 255, 255, 0.25);
 .quiz {
   background: @blackless;
+
   header {
     position: fixed;
     display: flex;
@@ -17,16 +18,47 @@
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
+    .mat-button-toggle-appearance-standard {
+      background-color: @blackless;
+      border: none;
+    }
+    .mat-button-toggle-standalone.mat-button-toggle-appearance-standard,
+    .mat-button-toggle-group-appearance-standard {
+      border-radius: 20px;
+      position: absolute;
+      bottom: 50px;
+      border: none;
+    }
+    .mat-button-toggle-group-appearance-standard
+      .mat-button-toggle
+      + .mat-button-toggle {
+      border-left: 4px solid @blackless;
+    }
+    .mat-button-toggle button {
+      transition: all 0.3s ease;
+    }
+    .mat-button-toggle.active button {
+      background-color: @favourite;
+      color: white;
+    }
+    .mat-button-toggle.active button span {
+      color: white;
+    }
     button {
       border-radius: 10px;
       font-size: 1.5rem;
-      background-color: #d9008f;
+      background-color: rgb(42, 39, 42);
+      text-transform: uppercase;
       padding: 10px 15px;
       border: none;
       color: white;
       cursor: pointer;
-      position: absolute;
-      bottom: 60px;
+    }
+    .matToggle {
+      button {
+        color: red;
+        border-radius: 0;
+      }
     }
     img {
       height: 300px;
@@ -50,12 +82,14 @@
     margin-top: 400px;
     position: relative;
     z-index: 2;
+
     .quiz__question {
       background: @black;
       display: flex;
       flex-flow: column wrap;
       justify-content: center;
       align-items: center;
+
       &:nth-child(1) {
         border-top-left-radius: 40px;
         border-top-right-radius: 40px;

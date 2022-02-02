@@ -6,9 +6,23 @@
       created by <span>{{ quizMeta.author }} </span><br />
       {{ quizMeta.describe }}
       <br />
-      <button (click)="playActive = true">Play!</button>
+
+      <mat-button-toggle-group>
+        <mat-button-toggle
+          *ngFor="let i of arrayAction"
+          value="{{ i }}"
+          class="matToggle"
+          [ngClass]="i === Action ? 'active' : ''"
+          (click)="Action = i"
+          >{{ i }}</mat-button-toggle
+        >
+      </mat-button-toggle-group>
     </div>
   </header>
-
-  <app-quiz-one *ngIf="playActive"></app-quiz-one>
+  <div [ngSwitch]="Action">
+    <div *ngSwitchCase="'play'">
+      <app-quiz-one></app-quiz-one>
+    </div>
+    <div *ngSwitchDefault>output2</div>
+  </div>
 </section>
