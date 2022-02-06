@@ -7,6 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateOneQueComponent implements OnInit {
   constructor() {}
-  selectedStatus = '';
+
   ngOnInit(): void {}
 }

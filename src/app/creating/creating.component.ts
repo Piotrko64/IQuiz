@@ -8,5 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class CreatingComponent implements OnInit {
   constructor() {}
   arrayAmountQue = [1, 2, 3];
+  ListQues = [
+    {
+      question: '',
+      answers: ['', '', '', ''],
+    },
+  ];
+  console() {
+    console.log(this.ListQues);
+  }
   ngOnInit(): void {}
 }
