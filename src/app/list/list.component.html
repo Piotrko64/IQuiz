@@ -1,4 +1,11 @@
 <article class="article">
+  <input
+    class="article__search"
+    [ngClass]="{ active: search }"
+    placeholder="Find a quiz!"
+    (input)="filter()"
+    [(ngModel)]="binding"
+  />
   <article class="article__for" *ngFor="let el of List; let i = index">
     <img src="{{ el.meta.image }}" alt="" />
     <div class="article__describe">
@@ -27,7 +34,8 @@
         >
         <br />
         <span *ngFor="let r of rate">
-          <mat-icon [ngStyle]="{ color: r - 1 < CountRate() ? 'yellow' : null }"
+          <mat-icon
+            [ngStyle]="{ color: r - 1 < CountRate(i) ? 'yellow' : null }"
             >star</mat-icon
           ></span
         >
@@ -42,9 +50,10 @@
         <button
           [routerLink]="['./quiz-one/', i]"
           routerLinkActive="router-link-active"
+          (click)="scrollUp()"
         >
-          Play!</button
-        ><button>See ratings</button><button>Score board</button>
+          Let's go!
+        </button>
       </div>
     </div>
   </article>

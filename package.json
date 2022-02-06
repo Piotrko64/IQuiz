@@ -10,9 +10,7 @@
     "dev:ssr": "ng run iquiz:serve-ssr",
     "serve:ssr": "node dist/iquiz/server/main.js",
     "build:ssr": "ng build && ng run iquiz:server",
-    "prerender": "ng run iquiz:prerender",
-    "start:heroku": "node dist/server",
-    "postinstall": "npm run build:ssr"
+    "prerender": "ng run iquiz:prerender"
   },
   "private": true,
   "dependencies": {

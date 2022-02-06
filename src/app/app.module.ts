@@ -1,3 +1,4 @@
+import { RatingsComponent } from './ratings/ratings.component';
 import { CreateOneQueComponent } from './create-one-que/create-one-que.component';
 import { QuizOneComponent } from './quiz-one/quiz-one.component';
 import { ListComponent } from './list/list.component';
@@ -26,6 +27,7 @@ import { MatRadioModule } from '@angular/material/radio';
     CreatingComponent,
     GoQuizComponent,
     CreateOneQueComponent,
+    RatingsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

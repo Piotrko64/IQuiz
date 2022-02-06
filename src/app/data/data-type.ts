@@ -6,7 +6,7 @@ export interface Quiz {
 }
 
 interface Meta {
-  title: string | number;
+  title: string;
   author: string;
   image?: string;
   describe?: string;
@@ -27,4 +27,10 @@ export interface Rating {
 interface Score {
   winner: string;
   score: number;
+}
+export type onetofive = 1 | 2 | 3 | 4 | 5;
+export interface rateScore {
+  author: string;
+  comment: string;
+  rate: number;
 }

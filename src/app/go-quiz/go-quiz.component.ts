@@ -16,7 +16,7 @@ export class GoQuizComponent implements OnInit {
   id: any = 1;
   List: Array<Questions> = quizzes[this.id].questions;
   quizMeta = quizzes[this.id].meta;
-  arrayAction = ['play', 'ratings', 'score'];
+  arrayAction = ['play', 'ratings'];
   Action: string = 'play';
 
   constructor(private route: ActivatedRoute, private http: ServiceQueService) {}

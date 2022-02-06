@@ -3,7 +3,7 @@
     <span class="header__span" [style.text-shadow]="textShadow">IQ</span>uiz
   </div>
   <div class="header__buttons">
-    <button class="header__button">
+    <button class="header__button" (click)="search = true">
       Search Quiz
       <br />
       <mat-icon>search</mat-icon></button
@@ -21,4 +21,4 @@
     </button>
   </div>
 </header>
-<app-list></app-list>
+<app-list [search]="search"></app-list>

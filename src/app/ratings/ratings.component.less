@@ -1,0 +1,116 @@
+@black: #1b141a;
+@blackless: rgb(61, 61, 61);
+@favourite: #d9008f;
+@favless: rgba(217, 0, 145, 0.25);
+@white: white;
+@whiteless: rgba(255, 255, 255, 0.25);
+.rate {
+  margin-top: 400px;
+  z-index: 99;
+  position: relative;
+  //   background: rgba(35, 24, 33, 1);
+  form {
+    background-color: @blackless;
+    input,
+    textarea {
+      margin: 0px 0;
+      height: 60px;
+      text-align: center;
+      padding: 5px;
+      font-size: 1.2rem;
+      background-color: @blackless;
+      border: none;
+      border-bottom: 2px solid white;
+      color: white;
+      outline: none;
+      transition: width 0.001s ease, border 0.3s ease-in-out;
+      width: 100%;
+      &.forComment {
+        height: 120px;
+      }
+      &:focus {
+        border-bottom: 2px solid @favourite;
+      }
+      &::target-text {
+        outline: 2px solid @favourite;
+      }
+    }
+
+    textarea::placeholder {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    button {
+      width: 100%;
+      background-color: @favourite;
+      font-size: 1.5rem;
+      border: none;
+      color: white;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover {
+        background-color: #9b0067;
+      }
+    }
+    .rate__stars {
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+
+      mat-icon {
+        font-size: 2rem !important;
+        margin: 5px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      mat-icon:nth-child(1):hover {
+        opacity: 0.5;
+      }
+    }
+  }
+  .comments {
+    .comments__com {
+      padding-left: 10vw;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      min-height: 200px;
+      background-color: @black;
+      font-size: 1.2rem;
+      &:nth-child(odd) {
+        background-color: @blackless;
+        .comments__avatar {
+          background-color: @black;
+        }
+      }
+      .comments__avatar {
+        color: @favourite;
+        border-radius: 50%;
+        background-color: @blackless;
+        font-size: 4rem;
+        height: 100px;
+        width: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .comments__content {
+        margin-left: 40px;
+        h1 {
+          color: @favourite;
+          margin-bottom: 0;
+        }
+        .comments__describe {
+          color: white;
+        }
+        span {
+          mat-icon {
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+}

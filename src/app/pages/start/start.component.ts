@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class StartComponent implements OnInit {
   textShadow = '10px 10px 2px rgba(255, 255, 255, 0.158)';
+  search = false;
   constructor() {}
   move(e: any) {
     this.textShadow = `${e.clientX / 30}px ${

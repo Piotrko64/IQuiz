@@ -1,0 +1,42 @@
+<div class="rate">
+  <form #QuizForm="ngForm" (ngSubmit)="send()">
+    <input
+      [(ngModel)]="commentForm.author"
+      name="author"
+      placeholder="Your nick"
+    />
+    <br />
+    <input
+      [(ngModel)]="commentForm.comment"
+      name="comment"
+      placeholder="Your comment for this quiz"
+      class="forComment"
+    />
+
+    <br />
+    <div class="rate__stars">
+      <span *ngFor="let r of [1, 2, 3, 4, 5]">
+        <mat-icon
+          [ngStyle]="{ color: r - 1 < commentForm.rate ? 'yellow' : null }"
+          (click)="getStars(r)"
+          >star</mat-icon
+        ></span
+      >
+    </div>
+    <button type="submit">Send comment</button>
+  </form>
+  <div class="comments">
+    <div class="comments__com" *ngFor="let r of List">
+      <div class="comments__avatar">{{ r.author[0] }}</div>
+      <div class="comments__content">
+        <h1>{{ r.author }}</h1>
+        <span *ngFor="let i of [1, 2, 3, 4, 5]">
+          <mat-icon [ngStyle]="{ color: i - 1 < r.rate ? 'yellow' : null }"
+            >star</mat-icon
+          >
+        </span>
+        <div class="comments__describe">{{ r.comment }}</div>
+      </div>
+    </div>
+  </div>
+</div>
