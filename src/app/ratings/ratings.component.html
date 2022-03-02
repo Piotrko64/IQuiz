@@ -4,6 +4,7 @@
       [(ngModel)]="commentForm.author"
       name="author"
       placeholder="Your nick"
+      required
     />
     <br />
     <input
@@ -11,19 +12,22 @@
       name="comment"
       placeholder="Your comment for this quiz"
       class="forComment"
+      required
     />
 
     <br />
     <div class="rate__stars">
       <span *ngFor="let r of [1, 2, 3, 4, 5]">
         <mat-icon
-          [ngStyle]="{ color: r - 1 < commentForm.rate ? 'yellow' : null }"
+          [ngStyle]="{ color: r - 1 < commentForm.rate ? '#ffe000' : null }"
           (click)="getStars(r)"
           >star</mat-icon
         ></span
       >
     </div>
-    <button type="submit">Send comment</button>
+    <button type="submit" [disabled]="isJustRate">
+      {{ !isJustRate ? "Send comment" : "you can only edit the sent comment" }}
+    </button>
   </form>
   <div class="comments">
     <div class="comments__com" *ngFor="let r of List">

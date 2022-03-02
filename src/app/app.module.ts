@@ -1,7 +1,7 @@
 import { RatingsComponent } from './ratings/ratings.component';
 import { CreateOneQueComponent } from './create-one-que/create-one-que.component';
 import { QuizOneComponent } from './quiz-one/quiz-one.component';
-import { ListComponent } from './list/list.component';
+import { ListComponent } from './pages/list/list.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatFormFieldModule } from '@angular/material/form-field';

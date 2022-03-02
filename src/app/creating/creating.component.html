@@ -1,20 +1,68 @@
 <div class="create">
-  <h1>Create Quiz</h1>
-  <form class="example-form">
-    <div class="create__one" *ngFor="let item of [0, 1, 2]">
-      <h1>{{ item }}</h1>
+  <form>
+    <h1>Base information</h1>
+    <input
+      name="author"
+      placeholder="Your nick"
+      required
+      [(ngModel)]="baseData.author"
+    />
+    <br />
+    <input
+      name="title"
+      placeholder="Title of your quiz :)"
+      [(ngModel)]="baseData.title"
+      required
+    />
+
+    <br />
+    <input
+      name="describe"
+      placeholder="short describe!"
+      [(ngModel)]="baseData.describe"
+      required
+    />
+
+    <br />
+    <input
+      name="url"
+      placeholder="image url of your quiz"
+      class=""
+      required
+      [(ngModel)]="baseData.image"
+    />
+
+    <br />
+    <h1>Questions</h1>
+    <span *ngFor="let item of ListQues; let i = index">
+      <h2>Question number: {{ i }}</h2>
       <input
-        [(ngModel)]="ListQues[item].question"
-        (input)="console()"
-        name="ListQues[item].question"
+        placeholder="Question {{ i }}"
+        required
+        [(ngModel)]="item.question"
+        [ngModelOptions]="{ standalone: true }"
       />
-      <span *ngFor="let b of [0, 1, 2, 3]">
-        {{ b }}
-        <input
-          [(ngModel)]="ListQues[item].answers[b]"
-          name="ListQues[item].answers[b]"
-        />
-      </span>
-    </div>
+      <br />
+      <br />
+      <h2>Answers</h2>
+      <input
+        *ngFor="let i of [0, 1, 2, 3]"
+        placeholder="Answer {{ i + 1 }}"
+        required
+        [(ngModel)]="item.answers[i]"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <br />
+      <br />
+      <h2>Correct answer</h2>
+      <button
+        *ngFor="let a of [0, 1, 2, 3]"
+        (click)="item.correct = item.answers[a]"
+      >
+        {{ item.answers[a] }}
+      </button>
+      correct: {{ item.correct }}
+    </span>
+    <button type="submit" (click)="console()">yes</button>
   </form>
 </div>

@@ -1,68 +1,23 @@
-@black: rgba(35, 24, 33, 1);
-@blackless: rgb(46, 46, 46);
-@favourite: #d9008f;
-@favless: #d9009140;
-@white: white;
-@whiteless: rgba(255, 255, 255, 0.25);
-// Custom input with ::ng-deep
-::ng-deep .mat-focused .mat-form-field-label {
-  /*change color of label*/
-  color: @favourite !important;
-}
-
-::ng-deep.mat-form-field-underline {
-  /*change color of underline*/
-  background-color: @favourite !important;
-}
-::ng-deep.mat-radio-outer-circle {
-  border-color: @favourite !important;
-}
-::ng-deep.mat-radio-label {
-  margin-right: 40px;
-}
-::ng-deep.mat-form-field-ripple {
-  /*change color of underline when focused*/
-  background-color: @favourite !important;
-}
-::ng-deep mat-form-field.example-full-width {
-  background-color: white;
-  color: @black;
-  .mat-form-field-underline {
-    position: static;
-    background-color: @favourite;
-  }
-  .mat-form-field-wrapper {
-    padding-bottom: 0em !important;
-  }
-}
-
-//
-
-.create {
-  background-color: @black;
-  width: 100vw;
-  height: 100%;
-  color: white;
-
-  h1 {
-    font-size: 5rem;
-    padding: 100px 0;
-    margin-left: auto;
-    justify-content: center;
-    display: flex;
-  }
+@blackless: rgb(61, 61, 61);
+form {
+  background-color: @blackless;
+  h1,
   h2 {
-    font-size: 3rem;
+    color: white;
   }
-  form {
-    padding-left: 10vw;
-    mat-form-field {
-    }
-
-    .create[_ngcontent-serverApp-c82]
-      form[_ngcontent-serverApp-c82]
-      mat-form-field[_ngcontent-serverApp-c82] {
-      margin-bottom: 0;
-    }
+  input,
+  textarea {
+    margin: 0px 0;
+    height: 60px;
+    text-align: center;
+    padding: 5px;
+    font-size: 1.2rem;
+    background-color: #2e2b2b;
+    border: none;
+    border-bottom: 2px solid white;
+    color: white;
+    outline: none;
+    transition: width 0.001s ease, border 0.3s ease-in-out;
+    width: 100%;
   }
 }

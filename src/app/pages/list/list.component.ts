@@ -1,19 +1,24 @@
-import { Quiz } from './../data/data-type';
-import { quizzes } from './../data/examples-quiz';
+import { ServiceQueService } from '../../services/service-que.service';
+import { Quiz } from '../../data/data-type';
 import { Component, Input, OnInit } from '@angular/core';
-import { Rating } from './../data/data-type';
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.less'],
 })
 export class ListComponent implements OnInit {
-  constructor() {}
+  constructor(private service: ServiceQueService) {}
   @Input()
   search!: boolean;
   binding = '';
-  List: Array<Quiz> = quizzes;
-  copyList = this.List;
+  List: Array<Quiz> = [];
+  getList(): void {
+    this.List = this.service.ActualQuizzes;
+    console.log(this.List[0].rating);
+  }
+
+  copyList = [...this.List];
   rate = [1, 2, 3, 4, 5];
   coloring = {
     easy: 'yellow',
@@ -26,11 +31,14 @@ export class ListComponent implements OnInit {
   // Counter diameter of rating
   CountRate(m: number) {
     let countIndex = this.List[m].rating.length;
-    let countRate: any = this.List[m].rating.reduce((a, b): any => {
-      return Number(a.rate + b.rate);
-    });
+    console.log(this.List);
+    let max = 0;
+    for (let i = 0; i <= this.List[m].rating.length - 1; i++) {
+      max = max + this.List[m].rating[i].rate;
+    }
+    let countRate: any = max / this.List[m].rating.length;
 
-    return Math.ceil(countRate / countIndex);
+    return Math.ceil(countRate);
   }
 
   filter() {
@@ -55,6 +63,7 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.search);
+    this.getList();
+    this.CountRate(0);
   }
 }

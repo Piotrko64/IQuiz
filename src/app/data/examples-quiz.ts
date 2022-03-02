@@ -186,4 +186,93 @@ export const quizzes: Array<Quiz> = [
       },
     ],
   },
+  {
+    meta: {
+      title: 'JSolution',
+      author: 'FrontJS',
+      image:
+        'https://jaki-jezyk-programowania.pl/img/technologies/javascript.png',
+      describe:
+        "Simple quiz for JS developer. What will the variable 'solution' return ? ",
+      date: '2/17/2022',
+      levelDifficulty: 'hard',
+    },
+    questions: [
+      {
+        question: 'const solution = 11 % 3',
+        answers: ['-2', 'Undefinded', '4', '2'],
+        correct: '2',
+      },
+      {
+        question: 'const solution = 2 in [0, 1, 2]',
+        answers: ['2', 'true', '1', 'NaN'],
+        correct: 'true',
+      },
+      {
+        question: 'const solution = 1.234e3',
+        answers: ['NaN', '123.4', 'SyntaxError', '1234'],
+        correct: '1234',
+      },
+      {
+        question: 'const solution = true < false',
+        answers: ['0', 'Boolean', 'null', 'false'],
+        correct: 'false',
+      },
+      {
+        question: 'const solution = Front Flex".replace("JS", "Flex")',
+        image: 'https://avatars.githubusercontent.com/u/77500425?v=4',
+        answers: [' Front Flex ', '  JS Flex ', ' front flex ', 'null'],
+        correct: ' Front Flex ',
+      },
+      {
+        question: 'const solution = 42.00.toFixed(2)',
+
+        answers: ['42.00', ' 4200 ', ' 40.00 ', '2'],
+        correct: '42.00',
+      },
+
+      {
+        question: 'const solution = (1 && 5) || -1  && 4',
+
+        answers: ['5', ' -1', ' 4 ', 'false'],
+        correct: '5',
+      },
+      {
+        question: 'const solution = [22, -2, 3].sort((a,b)=> b-a)',
+
+        answers: ['[]', '[22, 3, -2]', '[-2, 3, 22]', '[19 ,5, -2]'],
+        correct: '[22, 3, -2]',
+      },
+
+      {
+        question:
+          "const solution = false * 3 + !false*!!true + - Boolean('false') + !!5",
+
+        answers: ['1', 'true', '5', '0'],
+        correct: '1',
+      },
+    ],
+    rating: [
+      {
+        author: 'Front-Flex',
+        comment: 'Awesome!!!',
+        rate: 5,
+      },
+      {
+        author: 'NaNPerson',
+        comment: 'Hmm... only 4 answer was good. I will try again!',
+        rate: 4,
+      },
+    ],
+    score: [
+      {
+        winner: 'Front-Flex',
+        score: 295,
+      },
+      {
+        winner: 'NaNPerson',
+        score: 210,
+      },
+    ],
+  },
 ];

@@ -3,13 +3,13 @@
     <span class="header__span" [style.text-shadow]="textShadow">IQ</span>uiz
   </div>
   <div class="header__buttons">
-    <button class="header__button" (click)="search = true">
+    <button class="header__button" (click)="searching(scroll)">
       Search Quiz
       <br />
       <mat-icon>search</mat-icon></button
     ><button
       class="header__button"
-      [routerLink]="['./quiz-one/1']"
+      [routerLink]="randomLinkQuiz"
       routerLinkActive="router-link-active"
     >
       Quick Quiz
@@ -21,4 +21,4 @@
     </button>
   </div>
 </header>
-<app-list [search]="search"></app-list>
+<app-list [search]="search" #scroll></app-list>

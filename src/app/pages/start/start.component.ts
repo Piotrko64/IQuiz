@@ -1,18 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { ServiceQueService } from 'src/app/services/service-que.service';
 @Component({
   selector: 'app-start',
   templateUrl: './start.component.html',
   styleUrls: ['./start.component.less'],
 })
-export class StartComponent implements OnInit {
+export class StartComponent {
   textShadow = '10px 10px 2px rgba(255, 255, 255, 0.158)';
   search = false;
-  constructor() {}
+  constructor(private service: ServiceQueService) {}
   move(e: any) {
     this.textShadow = `${e.clientX / 30}px ${
       e.clientY / 20
     }px 2px rgba(255, 255, 255, 0.158)`;
   }
-  ngOnInit(): void {}
+  @ViewChild('scroll', { read: ElementRef }) scroll: ElementRef | undefined;
+  searching(e: any) {
+    this.scroll?.nativeElement.scrollIntoView({ behavior: 'smooth' });
+
+    this.search = true;
+  }
+  lengthofList = this.service.ActualQuizzes.length;
+  randomLinkQuiz =
+    './quiz-one/' + Math.floor(Math.random() * this.lengthofList);
 }

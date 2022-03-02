@@ -14,7 +14,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class GoQuizComponent implements OnInit {
   id: any = 1;
-  List: Array<Questions> = quizzes[this.id].questions;
+  List: Array<Questions> = this.http.ActualQuizzes[this.id].questions;
   quizMeta = quizzes[this.id].meta;
   arrayAction = ['play', 'ratings'];
   Action: string = 'play';
@@ -28,8 +28,7 @@ export class GoQuizComponent implements OnInit {
 
   ngOnInit(): void {
     this.get();
-
-    this.id = this.route.snapshot.paramMap.get('id');
+    window.scroll(0, 0);
 
     // Id of subpage
     this.id = this.route.snapshot.paramMap.get('id');

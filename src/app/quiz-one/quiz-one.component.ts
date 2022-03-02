@@ -52,7 +52,7 @@ export class QuizOneComponent implements OnInit {
   arrayAnswers: Array<string> = [];
   arrayCorrect: Array<string> = [];
   Counting: number = 0;
-  procentCounting: number = 0;
+  procentCounting: number | string = 0;
   disabled = false;
   constructor(private route: ActivatedRoute) {}
   // PUSH TO ARRAY
@@ -109,7 +109,10 @@ export class QuizOneComponent implements OnInit {
         console.log('No! Good answer is ' + this.arrayCorrect[j]);
       }
     }
-    this.procentCounting = (this.Counting / this.arrayCorrect.length) * 100;
+    this.procentCounting = (
+      (this.Counting / this.arrayCorrect.length) *
+      100
+    ).toFixed(2);
     this.disabled = true;
     setTimeout(() => {
       window.scrollTo({
