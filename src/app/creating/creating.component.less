@@ -83,19 +83,33 @@
   }
   .quiz__operations {
     display: flex;
-    flex-direction: column;
-    margin-top: 40px;
+    flex-direction: row;
+    justify-content: space-around;
+
+    max-width: 800px;
+    margin: auto;
+    padding: 60px 0;
     button {
-      width: 100vw;
-      min-height: 60px;
       flex: 1;
-      height: 50px;
+      max-width: 300px;
+      height: 200px;
       margin: 20px 2px 2px;
       border: none;
       font-size: 1.2rem;
       background-color: @favourite;
       color: white;
       cursor: pointer;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 2px solid @blackless;
+      mat-icon {
+        margin-top: 10px;
+        font-size: 4em;
+        width: auto;
+      }
+    }
+    button:hover {
+      transform: scale(1.1);
     }
   }
 }

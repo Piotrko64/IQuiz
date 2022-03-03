@@ -1,6 +1,8 @@
 <section class="quiz">
   <header>
-    <div class="backButton"><a [routerLink]="['../../']">Back</a></div>
+    <div class="backButton">
+      <a [routerLink]="['../../']"> <mat-icon>keyboard_backspace</mat-icon></a>
+    </div>
     <img src="{{ quizMeta.image }}" alt="{{ quizMeta.describe }}" />
     <div class="quiz__describe">
       <div class="quiz__title">{{ quizMeta.title }}</div>

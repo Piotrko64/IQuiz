@@ -12,6 +12,7 @@ export class CreatingComponent implements OnInit {
   constructor(private service: ServiceQueService) {}
   arrayAmountQue = [1, 2, 3];
   levels = ['easy', 'medium', 'hard'];
+  newQuiz = './quiz-one/' + this.service.ActualQuizzes.length;
   oneQue = {
     question: '',
     answers: ['', '', '', ''],
@@ -80,6 +81,8 @@ export class CreatingComponent implements OnInit {
     this.service.ActualQuizzes.push(this.Alldata);
     console.log(this.Alldata);
     console.log(this.service.ActualQuizzes);
+    alert('Quiz is added! Come to HomePage!');
+    window.scroll(0, 0);
   }
   ngOnInit(): void {
     window.scroll(0, 0);

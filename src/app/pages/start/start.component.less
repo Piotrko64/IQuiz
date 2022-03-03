@@ -34,7 +34,7 @@
       border: none;
       margin: 5px;
       color: white;
-      font-size: 42px;
+      font-size: 2rem;
       cursor: pointer;
       transition: all 0.3s ease;
       min-width: 300px;
@@ -57,9 +57,37 @@
       }
       .mat-icon {
         margin-top: 25px;
-        font-size: 82px;
+        font-size: 4.6rem;
+        height: auto;
+        width: auto;
         transition: all 0.3s ease;
       }
+    }
+  }
+}
+@media (max-width: 800px) {
+  .header {
+    font-size: 10rem;
+
+    &__title {
+      min-height: 40vh;
+    }
+    &__buttons {
+      .header__button {
+        background: @favourite;
+
+        min-height: 200px;
+        border-radius: 20px;
+      }
+    }
+  }
+}
+@media (max-width: 600px) {
+  .header {
+    font-size: 8rem;
+
+    &__title {
+      min-height: 30vh;
     }
   }
 }

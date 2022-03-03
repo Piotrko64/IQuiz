@@ -13,7 +13,7 @@ export class ListComponent implements OnInit {
   search!: boolean;
   binding = '';
 
-  List = this.service.ActualQuizzes;
+  List = this.service.ActualQuizzes.reverse();
 
   copyList: Quiz[] = this.List;
   rate = [1, 2, 3, 4, 5];
