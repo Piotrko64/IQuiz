@@ -10,7 +10,7 @@ import { ServiceQueService } from '../services/service-que.service';
   styleUrls: ['./ratings.component.less'],
 })
 export class RatingsComponent implements OnInit {
-  id: any = 1;
+  id: any = this.route.snapshot.paramMap.get('id');
   List: Array<Rating> = this.http.ActualQuizzes[this.id].rating;
   isJustRate = false;
   commentForm: rateScore = {
@@ -38,6 +38,5 @@ export class RatingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.List = quizzes[this.id].rating;
   }
 }

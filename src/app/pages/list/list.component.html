@@ -6,7 +6,7 @@
     (input)="filter()"
     [(ngModel)]="binding"
   />
-  <article class="article__for" *ngFor="let el of List; let i = index">
+  <article class="article__for" *ngFor="let el of copyList; let i = index">
     <img src="{{ el.meta.image }}" alt="" />
     <div class="article__describe">
       <h1>

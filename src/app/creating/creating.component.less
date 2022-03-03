@@ -1,23 +1,101 @@
+@black: #1b141a;
 @blackless: rgb(61, 61, 61);
-form {
-  background-color: @blackless;
+@favourite: #d9008f;
+@favless: rgba(217, 0, 145, 0.25);
+@white: white;
+@whiteless: rgba(255, 255, 255, 0.25);
+.create {
   h1,
   h2 {
-    color: white;
-  }
-  input,
-  textarea {
-    margin: 0px 0;
-    height: 60px;
     text-align: center;
-    padding: 5px;
-    font-size: 1.2rem;
-    background-color: #2e2b2b;
-    border: none;
-    border-bottom: 2px solid white;
+  }
+
+  .create__show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    font-weight: 400;
     color: white;
-    outline: none;
-    transition: width 0.001s ease, border 0.3s ease-in-out;
-    width: 100%;
+    margin-bottom: 80px;
+    h1 {
+      color: white;
+      margin-top: 60px;
+    }
+    h2 {
+      color: @favourite;
+      margin: 0 0 40px;
+    }
+    img {
+      max-width: 300px;
+    }
+  }
+  form {
+    background-color: @blackless;
+    h1 {
+      color: @favourite;
+    }
+    h2 {
+      color: white;
+    }
+    input,
+    textarea {
+      margin: 0px 0;
+      height: 60px;
+      text-align: center;
+      padding: 5px;
+      font-size: 1.2rem;
+      background-color: #2e2b2b;
+      border: none;
+      border-bottom: 2px solid white;
+      color: white;
+      outline: none;
+      transition: width 0.001s ease, border 0.3s ease-in-out;
+      width: 100%;
+    }
+    img {
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 400px;
+      width: 90vw;
+    }
+  }
+  .quiz__correctButtons {
+    display: flex;
+    .quiz__button {
+      flex: 1;
+      height: 50px;
+      margin: 2px;
+      border: none;
+      font-size: 1.2rem;
+      background-color: @favourite;
+      color: white;
+      cursor: pointer;
+      max-width: 100vw;
+      &.active {
+        background-color: #ac3885;
+      }
+    }
+  }
+  .quiz__operations {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    button {
+      width: 100vw;
+      min-height: 60px;
+      flex: 1;
+      height: 50px;
+      margin: 20px 2px 2px;
+      border: none;
+      font-size: 1.2rem;
+      background-color: @favourite;
+      color: white;
+      cursor: pointer;
+    }
   }
 }

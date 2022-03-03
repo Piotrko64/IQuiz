@@ -2,7 +2,7 @@ import { ServiceQueService } from './../services/service-que.service';
 
 import { Component, OnInit } from '@angular/core';
 import { Questions } from '../data/data-type';
-import { quizzes } from '../data/examples-quiz';
+
 import { ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
@@ -15,7 +15,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class GoQuizComponent implements OnInit {
   id: any = 1;
   List: Array<Questions> = this.http.ActualQuizzes[this.id].questions;
-  quizMeta = quizzes[this.id].meta;
+  quizMeta = this.http.ActualQuizzes[this.id].meta;
   arrayAction = ['play', 'ratings'];
   Action: string = 'play';
 
@@ -27,12 +27,11 @@ export class GoQuizComponent implements OnInit {
   // change playActive
 
   ngOnInit(): void {
-    this.get();
     window.scroll(0, 0);
 
     // Id of subpage
     this.id = this.route.snapshot.paramMap.get('id');
-    this.List = quizzes[this.id].questions;
-    this.quizMeta = quizzes[this.id].meta;
+    this.List = this.http.ActualQuizzes[this.id].questions;
+    this.quizMeta = this.http.ActualQuizzes[this.id].meta;
   }
 }

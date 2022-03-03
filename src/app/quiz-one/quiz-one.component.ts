@@ -3,6 +3,7 @@ import { quizzes } from './../data/examples-quiz';
 import { Input, ViewEncapsulation } from '@angular/core';
 import { Questions } from 'src/app/data/data-type';
 import { Component, OnInit } from '@angular/core';
+import { ServiceQueService } from '../services/service-que.service';
 // Animation
 import { HostBinding } from '@angular/core';
 import {
@@ -46,15 +47,18 @@ import {
 export class QuizOneComponent implements OnInit {
   isOpen = false;
 
-  id: any = 1;
-  List: Array<Questions> = quizzes[this.id].questions;
-  quizMeta = quizzes[this.id].meta;
+  id: any = this.route.snapshot.paramMap.get('id');
+  List: Array<Questions> = this.service.ActualQuizzes[this.id].questions;
+  quizMeta = this.service.ActualQuizzes[this.id].meta;
   arrayAnswers: Array<string> = [];
   arrayCorrect: Array<string> = [];
   Counting: number = 0;
   procentCounting: number | string = 0;
   disabled = false;
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private service: ServiceQueService
+  ) {}
   // PUSH TO ARRAY
   push(ans: string, i: number) {
     this.arrayAnswers[i] = ans;
@@ -162,10 +166,12 @@ export class QuizOneComponent implements OnInit {
   }
   ngOnInit(): void {
     // Id of subpage
+    console.log();
+    this.List = this.service.ActualQuizzes[this.id].questions;
     this.id = this.route.snapshot.paramMap.get('id');
-    this.List = quizzes[this.id].questions;
-    this.quizMeta = quizzes[this.id].meta;
 
+    this.quizMeta = this.service.ActualQuizzes[this.id].meta;
+    console.log(this.List);
     this.SwapAns();
     this.Reordering();
   }

@@ -12,13 +12,10 @@ export class ListComponent implements OnInit {
   @Input()
   search!: boolean;
   binding = '';
-  List: Array<Quiz> = [];
-  getList(): void {
-    this.List = this.service.ActualQuizzes;
-    console.log(this.List[0].rating);
-  }
 
-  copyList = [...this.List];
+  List = this.service.ActualQuizzes;
+
+  copyList: Quiz[] = this.List;
   rate = [1, 2, 3, 4, 5];
   coloring = {
     easy: 'yellow',
@@ -30,8 +27,6 @@ export class ListComponent implements OnInit {
   }
   // Counter diameter of rating
   CountRate(m: number) {
-    let countIndex = this.List[m].rating.length;
-    console.log(this.List);
     let max = 0;
     for (let i = 0; i <= this.List[m].rating.length - 1; i++) {
       max = max + this.List[m].rating[i].rate;
@@ -42,7 +37,8 @@ export class ListComponent implements OnInit {
   }
 
   filter() {
-    this.List = this.copyList.filter((f) => {
+    console.log(this.List, 'aaa', this.copyList);
+    this.copyList = this.List.filter((f) => {
       if (
         f.meta.author.toUpperCase().indexOf(this.binding.toUpperCase()) !==
           -1 ||
@@ -55,7 +51,7 @@ export class ListComponent implements OnInit {
       ) {
         return f;
       }
-      if (this.binding.length === 0) {
+      if (this.binding == '') {
         return f;
       }
       return;
@@ -63,7 +59,9 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getList();
+    this.copyList = this.List;
+    console.log(this.copyList);
+
     this.CountRate(0);
   }
 }

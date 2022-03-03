@@ -1,4 +1,24 @@
 <div class="create">
+  <button class="backButton"><a [routerLink]="['../']">Back</a></button>
+  <div class="create__show">
+    <h1>{{ baseData.title }}</h1>
+
+    <h2>{{ baseData.author }}</h2>
+    <img *ngIf="baseData.image" [src]="baseData.image" alt="error" />
+    <p>{{ baseData.describe }}</p>
+
+    <mat-button-toggle-group>
+      <mat-button-toggle
+        *ngFor="let i of levels"
+        value="{{ i }}"
+        class="matToggle"
+        [ngClass]="i === baseData.levelDifficulty ? 'active' : ''"
+        (click)="baseData.levelDifficulty = i"
+        >{{ i }}</mat-button-toggle
+      >
+    </mat-button-toggle-group>
+  </div>
+
   <form>
     <h1>Base information</h1>
     <input
@@ -35,11 +55,18 @@
     <br />
     <h1>Questions</h1>
     <span *ngFor="let item of ListQues; let i = index">
-      <h2>Question number: {{ i }}</h2>
+      <h2>Question number: {{ i + 1 }}</h2>
       <input
-        placeholder="Question {{ i }}"
+        placeholder="Question {{ i + 1 }}"
         required
         [(ngModel)]="item.question"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <img *ngIf="item.image" [src]="item.image" alt="Question image" />
+      <input
+        placeholder="OPTIONAL url of image"
+        required
+        [(ngModel)]="item.image"
         [ngModelOptions]="{ standalone: true }"
       />
       <br />
@@ -54,15 +81,30 @@
       />
       <br />
       <br />
-      <h2>Correct answer</h2>
-      <button
-        *ngFor="let a of [0, 1, 2, 3]"
-        (click)="item.correct = item.answers[a]"
-      >
-        {{ item.answers[a] }}
-      </button>
-      correct: {{ item.correct }}
+      <h2>
+        Correct answer <span>{{ item.correct }}</span>
+      </h2>
+      <div class="quiz__correctButtons">
+        <button
+          class="quiz__button"
+          *ngFor="let a of [0, 1, 2, 3]"
+          (click)="item.correct = item.answers[a]"
+          [ngClass]="
+            item.correct === item.answers[a]
+              ? 'quiz__button active'
+              : 'quiz__button'
+          "
+        >
+          {{ item.answers[a] }}
+        </button>
+      </div>
     </span>
-    <button type="submit" (click)="console()">yes</button>
+    <div class="quiz__operations">
+      <button type="button" (click)="addContainer()">Add new Question</button>
+      <button type="button" (click)="jsonFile()">
+        Download JSON file quiz
+      </button>
+      <button type="submit" (click)="pushQuiz()">Add Quiz</button>
+    </div>
   </form>
 </div>

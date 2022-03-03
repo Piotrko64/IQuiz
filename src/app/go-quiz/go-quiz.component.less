@@ -25,9 +25,8 @@
     .mat-button-toggle-standalone.mat-button-toggle-appearance-standard,
     .mat-button-toggle-group-appearance-standard {
       border-radius: 20px;
-      position: absolute;
-      bottom: 50px;
       border: none;
+      width: fit-content;
     }
     .mat-button-toggle-group-appearance-standard
       .mat-button-toggle
@@ -64,13 +63,16 @@
       height: 300px;
     }
     .quiz__describe {
+      display: flex;
+      flex-direction: column;
       margin-left: 40px;
+      justify-content: space-around;
       color: white;
       span {
         color: @favourite;
         font-size: 1.2em;
       }
-      h1 {
+      .quiz__title {
         margin-top: 10px;
         font-size: 4rem;
 
@@ -78,6 +80,7 @@
       }
     }
   }
+
   &__content {
     margin-top: 400px;
     position: relative;

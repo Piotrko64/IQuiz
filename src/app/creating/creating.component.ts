@@ -1,37 +1,87 @@
+import { Questions } from './../data/data-type';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Meta } from '@angular/platform-browser';
+import { ServiceQueService } from '../services/service-que.service';
 @Component({
   selector: 'app-creating',
   templateUrl: './creating.component.html',
   styleUrls: ['./creating.component.less'],
 })
 export class CreatingComponent implements OnInit {
-  constructor() {}
+  constructor(private service: ServiceQueService) {}
   arrayAmountQue = [1, 2, 3];
-  tak = '';
-  baseData = {
-    author: '',
-    title: '',
+  levels = ['easy', 'medium', 'hard'];
+  oneQue = {
+    question: '',
+    answers: ['', '', '', ''],
+    correct: '',
     image: '',
-    describe: '',
+  };
+  baseData: any = {
+    author: 'Your nick',
+    title: 'Title',
+    image: '',
+    describe: 'Write short describe!',
+    date: '01/02/2019',
     levelDifficulty: 'easy',
   };
-  ListQues = [
+  ListQues: Questions[] = [
     {
       question: '',
       answers: ['', '', '', ''],
       correct: '',
+      image: '',
     },
     {
       question: '',
       answers: ['', '', '', ''],
       correct: '',
+      image: '',
+    },
+    {
+      question: '',
+      answers: ['', '', '', ''],
+      correct: '',
+      image: '',
     },
   ];
-
-  console() {
-    console.log(this.ListQues);
-    console.log(JSON.stringify(this.ListQues));
+  Alldata = {
+    meta: this.baseData,
+    questions: this.ListQues,
+    rating: [],
+    score: [],
+  };
+  addContainer() {
+    this.ListQues.push(this.oneQue);
+    setTimeout(() => {
+      window.scrollBy({
+        top: 500,
+        behavior: 'smooth',
+      });
+    }, 50);
   }
-  ngOnInit(): void {}
+  download(content: any, fileName: any, contentType: any) {
+    const a = document.createElement('a');
+    const file = new Blob([content], { type: contentType });
+    a.href = URL.createObjectURL(file);
+    a.download = fileName;
+    a.click();
+  }
+
+  jsonFile() {
+    this.download(
+      JSON.stringify(this.Alldata),
+      'YourJSONQuiz.json',
+      'text/plain'
+    );
+  }
+  pushQuiz() {
+    this.service.ActualQuizzes.push(this.Alldata);
+    console.log(this.Alldata);
+    console.log(this.service.ActualQuizzes);
+  }
+  ngOnInit(): void {
+    window.scroll(0, 0);
+  }
 }

@@ -1,13 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
-
+@black: rgba(35, 24, 33, 1);
+@blackless: rgb(46, 46, 46);
+@favourite: #d9008f;
+@favless: rgba(217, 0, 145, 0.25);
+@white: white;
+@whiteless: rgba(255, 255, 255, 0.25);
 html,
 body {
   height: 100%;
-  font-size: 20px;
+  font-size: 18px;
 }
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  .backButton {
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: none;
+    font-size: 25px;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    background-color: @favourite;
+    border-bottom-right-radius: 50%;
+
+    a {
+      color: white;
+      text-decoration: none;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 }
 @media (max-width: 1200) {
   body {
