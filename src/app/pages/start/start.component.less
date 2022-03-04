@@ -84,10 +84,33 @@
 }
 @media (max-width: 600px) {
   .header {
-    font-size: 8rem;
+    font-size: 7.2rem;
 
     &__title {
       min-height: 30vh;
+    }
+    &__buttons {
+      .header__button {
+        min-height: 180px;
+        border-radius: 20px;
+        border: none;
+        margin: auto 5px 5px;
+        color: white;
+        font-size: 1.8rem;
+
+        min-width: 280px;
+
+        &:nth-child(2) {
+          &:hover {
+            flex: 1;
+          }
+        }
+
+        .mat-icon {
+          margin-top: 15px;
+          font-size: 4.2rem;
+        }
+      }
     }
   }
 }
