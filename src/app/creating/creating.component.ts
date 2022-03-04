@@ -77,7 +77,25 @@ export class CreatingComponent implements OnInit {
       'text/plain'
     );
   }
-  pushQuiz() {
+  validButtons() {
+    return this.ListQues.every(({ correct }) => correct !== '');
+  }
+  colorBorder(answer: string, correct: string) {
+    if (correct === answer && answer) {
+      return '#2ced2c';
+    } else {
+      return 'white';
+    }
+  }
+  pushQuiz(e: any) {
+    if (this.validButtons() == false) {
+      alert('check buttons');
+      return;
+    }
+    if (e.invalid) {
+      alert('Oops... Check if you filled in the form correctly');
+      return;
+    }
     this.service.ActualQuizzes.push(this.Alldata);
     console.log(this.Alldata);
     console.log(this.service.ActualQuizzes);

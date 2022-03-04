@@ -9,6 +9,9 @@
   h2 {
     text-align: center;
     font-weight: 400;
+    span {
+      color: @favourite;
+    }
   }
 
   .create__show {
@@ -21,7 +24,8 @@
     color: white;
     margin-bottom: 80px;
     .mat-button-toggle-appearance-standard {
-      background-color: @blackless;
+      background-color: @black;
+      color: white;
       border: none;
     }
     .mat-button-toggle-standalone.mat-button-toggle-appearance-standard,
@@ -38,12 +42,9 @@
     .mat-button-toggle button {
       transition: all 0.3s ease;
     }
-    .mat-button-toggle.active button {
-      background-color: @favourite;
-      color: white;
-    }
-    .mat-button-toggle.active button span {
-      color: white;
+
+    .mat-button-toggle.active {
+      background: @favourite;
     }
     button {
       border-radius: 10px;
@@ -87,8 +88,14 @@
       border-bottom: 2px solid white;
       color: white;
       outline: none;
-      transition: width 0.001s ease, border 0.3s ease-in-out;
+      transition: width 0.001s ease, border 0.1s ease-in-out;
       width: 100%;
+      &.ng-touched {
+        border-bottom: 2px solid @favourite;
+        &.ng-invalid {
+          border-bottom: 2px solid red;
+        }
+      }
     }
     img {
       margin-left: auto;
@@ -105,23 +112,31 @@
     flex-wrap: wrap;
     .quiz__button {
       flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       min-height: 50px;
       margin: 2px;
-      border: none;
+
       font-size: 1.2rem;
       background-color: @favourite;
       color: white;
       cursor: pointer;
-
+      transition: background-color 0.3s ease;
       min-width: 300px;
+      box-sizing: border-box;
+
       &.active {
+        border: 2px solid white;
+      }
+      &:hover {
         background-color: #ac3885;
       }
     }
   }
   .quiz__operations {
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
     justify-content: space-around;
 
     max-width: 800px;
@@ -130,6 +145,7 @@
     button {
       flex: 1;
       max-width: 300px;
+      min-width: 150px;
       height: 200px;
       margin: 20px 2px 2px;
       border: none;

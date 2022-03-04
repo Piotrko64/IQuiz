@@ -21,7 +21,7 @@
     </mat-button-toggle-group>
   </div>
 
-  <form>
+  <form (ngSubmit)="pushQuiz(form)" #form="ngForm">
     <h1>Base information</h1>
     <input
       name="author"
@@ -50,7 +50,6 @@
       name="url"
       placeholder="image url of your quiz"
       class=""
-      required
       [(ngModel)]="baseData.image"
     />
 
@@ -67,7 +66,6 @@
       <img *ngIf="item.image" [src]="item.image" alt="Question image" />
       <input
         placeholder="OPTIONAL url of image"
-        required
         [(ngModel)]="item.image"
         [ngModelOptions]="{ standalone: true }"
       />
@@ -80,6 +78,9 @@
         required
         [(ngModel)]="item.answers[i]"
         [ngModelOptions]="{ standalone: true }"
+        [ngStyle]="{
+          color: colorBorder(item.answers[i], item.correct)
+        }"
       />
       <br />
       <br />
@@ -87,18 +88,18 @@
         Correct answer <span>{{ item.correct }}</span>
       </h2>
       <div class="quiz__correctButtons">
-        <button
+        <div
           class="quiz__button"
           *ngFor="let a of [0, 1, 2, 3]"
           (click)="item.correct = item.answers[a]"
           [ngClass]="
-            item.correct === item.answers[a]
+            item.correct === item.answers[a] && item.correct
               ? 'quiz__button active'
               : 'quiz__button'
           "
         >
           {{ item.answers[a] }}
-        </button>
+        </div>
       </div>
     </span>
     <div class="quiz__operations">
@@ -110,7 +111,7 @@
         Download JSON file quiz <br />
         <mat-icon>file_copy</mat-icon>
       </button>
-      <button type="submit" (click)="pushQuiz()" [routerLink]="['../']">
+      <button type="submit">
         Add Quiz <br />
         <mat-icon>note_add</mat-icon>
       </button>
