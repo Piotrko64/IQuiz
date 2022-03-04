@@ -102,6 +102,7 @@
         h1 {
           color: @favourite;
           margin-bottom: 0;
+          font-weight: 400;
         }
         .comments__describe {
           color: white;
@@ -110,6 +111,43 @@
           mat-icon {
             font-size: 1.2rem;
           }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 800px) {
+  .rate {
+    margin-top: 520px;
+
+    form {
+      input,
+      textarea {
+        font-size: 1rem;
+
+        &.forComment {
+          height: 100px;
+        }
+      }
+
+      button {
+        font-size: 1.2rem;
+      }
+      .rate__stars {
+        padding: 10px;
+      }
+    }
+    .comments {
+      .comments__com {
+        flex-direction: column;
+        padding: 20px 0;
+        .comments__avatar {
+          font-size: 3rem;
+          height: 80px;
+          width: 80px;
+        }
+        .comments__content {
+          margin-left: 0px;
         }
       }
     }
