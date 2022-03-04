@@ -12,6 +12,7 @@ export class CreatingComponent implements OnInit {
   constructor(private service: ServiceQueService) {}
   arrayAmountQue = [1, 2, 3];
   levels = ['easy', 'medium', 'hard'];
+  newDate = new Date();
   newQuiz = './quiz-one/' + this.service.ActualQuizzes.length;
   oneQue = {
     question: '',
@@ -24,7 +25,9 @@ export class CreatingComponent implements OnInit {
     title: 'Title',
     image: '',
     describe: 'Write short describe!',
-    date: '01/02/2019',
+    date: `${this.newDate.getDay()}/${this.newDate.getMonth()}/${
+      this.newDate.getFullYear
+    }`,
     levelDifficulty: 'easy',
   };
   ListQues: Questions[] = [
