@@ -26,14 +26,16 @@
     <input
       name="author"
       placeholder="Your nick"
-      required
+      maxlength="50"
       [(ngModel)]="baseData.author"
+      required
     />
     <br />
     <input
       name="title"
       placeholder="Title of your quiz :)"
       [(ngModel)]="baseData.title"
+      maxlength="60"
       required
     />
 
@@ -42,8 +44,8 @@
       name="describe"
       placeholder="short describe!"
       [(ngModel)]="baseData.describe"
-      required
       maxlength="120"
+      required
     />
 
     <br />
@@ -60,9 +62,9 @@
       <h2>Question number: {{ i + 1 }}</h2>
       <input
         placeholder="Question {{ i + 1 }}"
-        required
         [(ngModel)]="item.question"
         [ngModelOptions]="{ standalone: true }"
+        required
       />
       <img *ngIf="item.image" [src]="item.image" alt="Question image" />
       <input
@@ -75,7 +77,7 @@
       <h2>Answers</h2>
       <input
         *ngFor="let i of [0, 1, 2, 3]"
-        placeholder="Answer {{ i + 1 }}"
+        placeholder="{{ checking ? 'Remember about me!!!' : i + 1 }}"
         required
         [(ngModel)]="item.answers[i]"
         [ngModelOptions]="{ standalone: true }"
@@ -86,12 +88,16 @@
       <br />
       <br />
       <h2>
-        Correct answer <span>{{ item.correct }}</span>
+        Correct answer
+        <span *ngIf="item.answers.indexOf(item.correct) !== -1">{{
+          item.correct
+        }}</span>
       </h2>
       <div class="quiz__correctButtons">
         <div
           class="quiz__button"
           *ngFor="let a of [0, 1, 2, 3]"
+          required
           (click)="item.correct = item.answers[a]"
           [ngClass]="
             item.correct === item.answers[a] && item.correct
@@ -108,7 +114,7 @@
         Add new Question <br />
         <mat-icon>library_add</mat-icon>
       </button>
-      <button type="button" (click)="jsonFile()">
+      <button type="button" (click)="jsonFile(form)">
         Download JSON file quiz <br />
         <mat-icon>file_copy</mat-icon>
       </button>

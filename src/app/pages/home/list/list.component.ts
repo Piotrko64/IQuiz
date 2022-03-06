@@ -1,5 +1,5 @@
-import { ServiceQueService } from '../../services/service-que.service';
-import { Quiz } from '../../data/data-type';
+import { ServiceQueService } from '../../../services/service-que.service';
+import { Quiz } from '../../../data/data-type';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -13,7 +13,7 @@ export class ListComponent implements OnInit {
   search!: boolean;
   binding = '';
 
-  List = this.service.ActualQuizzes.reverse();
+  List = this.service.ActualQuizzes;
 
   copyList: Quiz[] = this.List;
   rate = [1, 2, 3, 4, 5];
@@ -25,7 +25,7 @@ export class ListComponent implements OnInit {
   scrollUp() {
     window.scrollTo(0, 0);
   }
-  // Counter diameter of rating
+
   CountRate(m: number) {
     let max = 0;
     for (let i = 0; i <= this.List[m].rating.length - 1; i++) {
@@ -60,7 +60,6 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.copyList = this.List;
-    console.log(this.copyList);
 
     this.CountRate(0);
   }

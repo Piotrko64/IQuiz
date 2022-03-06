@@ -3,6 +3,7 @@ import { Quiz } from './data-type';
 export const quizzes: Array<Quiz> = [
   {
     meta: {
+      id: 'F06032022easy245',
       title: 'Front-end Quiz',
       author: 'Front-Flex',
       image:
@@ -76,6 +77,7 @@ export const quizzes: Array<Quiz> = [
   },
   {
     meta: {
+      id: 'M06032022hard596',
       title: 'Musical Instruments',
       author: 'Sound_Architecture',
       image:
@@ -188,13 +190,14 @@ export const quizzes: Array<Quiz> = [
   },
   {
     meta: {
+      id: 'J01032022hard781',
       title: 'JSolution',
       author: 'FrontJS',
       image:
         'https://jaki-jezyk-programowania.pl/img/technologies/javascript.png',
       describe:
         "Simple quiz for JS developer. What will the variable 'solution' return ? ",
-      date: '2/17/2022',
+      date: '17/2/2022',
       levelDifficulty: 'hard',
     },
     questions: [

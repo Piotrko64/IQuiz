@@ -33,8 +33,9 @@
           >Demanding quiz!</span
         >
         <br />
-        <span *ngFor="let r of rate">
+        <span *ngIf="CountRate(i)">
           <mat-icon
+            *ngFor="let r of rate"
             [ngStyle]="{ color: r - 1 < CountRate(i) ? '#ffe000' : null }"
             >star</mat-icon
           ></span
@@ -48,7 +49,7 @@
 
       <div class="article__buttons">
         <button
-          [routerLink]="['./quiz-one/', i]"
+          [routerLink]="['./quiz-one/', el.meta.id]"
           routerLinkActive="router-link-active"
           (click)="scrollUp()"
         >

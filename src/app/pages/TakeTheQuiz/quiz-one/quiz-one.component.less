@@ -40,11 +40,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70px;
   }
   .color {
     color: @favourite;
   }
 }
-@media screen {
+@media (max-width: 800px) {
+  .quiz__buttons {
+    padding: 10px 5px;
+
+    button {
+      padding: 5px 10px;
+    }
+  }
+  .quiz__counting {
+    padding-top: 10px;
+    height: auto;
+    font-size: 1.4rem;
+
+    .color {
+      color: @favourite;
+    }
+  }
 }

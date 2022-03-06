@@ -1,8 +1,6 @@
-import { Questions } from './../data/data-type';
+import { Questions } from '../../data/data-type';
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { Meta } from '@angular/platform-browser';
-import { ServiceQueService } from '../services/service-que.service';
+import { ServiceQueService } from '../../services/service-que.service';
 @Component({
   selector: 'app-creating',
   templateUrl: './creating.component.html',
@@ -13,6 +11,7 @@ export class CreatingComponent implements OnInit {
   arrayAmountQue = [1, 2, 3];
   levels = ['easy', 'medium', 'hard'];
   newDate = new Date();
+  checking = false;
   newQuiz = './quiz-one/' + this.service.ActualQuizzes.length;
   oneQue = {
     question: '',
@@ -21,13 +20,12 @@ export class CreatingComponent implements OnInit {
     image: '',
   };
   baseData: any = {
+    id: ``,
     author: 'Your nick',
     title: 'Title',
     image: '',
     describe: 'Write short describe!',
-    date: `${this.newDate.getDay()}/${this.newDate.getMonth()}/${
-      this.newDate.getFullYear
-    }`,
+    date: `${this.newDate.getDate()}/${this.newDate.getMonth()}/${this.newDate.getFullYear()}`,
     levelDifficulty: 'easy',
   };
   ListQues: Questions[] = [
@@ -65,6 +63,13 @@ export class CreatingComponent implements OnInit {
       });
     }, 50);
   }
+  receiveId() {
+    this.baseData.id =
+      this.baseData.title[0] +
+      this.newDate.getTime +
+      this.baseData.levelDifficulty[0] +
+      Math.round(Math.random() * 999);
+  }
   download(content: any, fileName: any, contentType: any) {
     const a = document.createElement('a');
     const file = new Blob([content], { type: contentType });
@@ -72,16 +77,35 @@ export class CreatingComponent implements OnInit {
     a.download = fileName;
     a.click();
   }
-
-  jsonFile() {
-    this.download(
-      JSON.stringify(this.Alldata),
-      'YourJSONQuiz.json',
-      'text/plain'
-    );
+  Valid(e: any): boolean {
+    if (e.invalid) {
+      alert('Oops... Check if you filled in the form correctly!');
+      return false;
+    } else if (this.ListQues.some((e) => e.answers.indexOf('') !== -1)) {
+      alert('Remember about all answers!!!');
+      this.checking = true;
+      return false;
+    } else if (this.validButtons() === false) {
+      alert('Check if you have marked the correct answer everywhere');
+      return false;
+    }
+    return true;
+  }
+  jsonFile(e: any) {
+    this.receiveId();
+    if (this.Valid(e)) {
+      this.download(
+        JSON.stringify(this.Alldata),
+        'YourJSONQuiz.json',
+        'text/plain'
+      );
+    }
   }
   validButtons() {
-    return this.ListQues.every(({ correct }) => correct !== '');
+    return this.ListQues.every(
+      ({ answers, correct }) =>
+        correct !== '' && answers.indexOf(correct) !== -1
+    );
   }
   colorBorder(answer: string, correct: string) {
     if (correct === answer && answer) {
@@ -90,20 +114,15 @@ export class CreatingComponent implements OnInit {
       return 'white';
     }
   }
+
   pushQuiz(e: any) {
-    if (this.validButtons() == false) {
-      alert('check buttons');
-      return;
+    this.receiveId();
+    if (this.Valid(e)) {
+      this.service.ActualQuizzes.push(this.Alldata);
+
+      alert('Quiz is added! Come to HomePage!');
+      window.scroll(0, 0);
     }
-    if (e.invalid) {
-      alert('Oops... Check if you filled in the form correctly');
-      return;
-    }
-    this.service.ActualQuizzes.push(this.Alldata);
-    console.log(this.Alldata);
-    console.log(this.service.ActualQuizzes);
-    alert('Quiz is added! Come to HomePage!');
-    window.scroll(0, 0);
   }
   ngOnInit(): void {
     window.scroll(0, 0);

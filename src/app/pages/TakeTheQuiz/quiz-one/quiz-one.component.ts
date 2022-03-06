@@ -1,55 +1,26 @@
+import { Quiz } from './../../../data/data-type';
 import { ActivatedRoute } from '@angular/router';
-import { quizzes } from './../data/examples-quiz';
-import { Input, ViewEncapsulation } from '@angular/core';
+
+import { ViewEncapsulation } from '@angular/core';
 import { Questions } from 'src/app/data/data-type';
 import { Component, OnInit } from '@angular/core';
-import { ServiceQueService } from '../services/service-que.service';
-// Animation
-import { HostBinding } from '@angular/core';
-import {
-  trigger,
-  state,
-  keyframes,
-  style,
-  animate,
-  transition,
-  // ...
-} from '@angular/animations';
+import { ServiceQueService } from '../../../services/service-que.service';
+
 @Component({
   selector: 'app-quiz-one',
   templateUrl: './quiz-one.component.html',
   styleUrls: ['./quiz-one.component.less'],
   encapsulation: ViewEncapsulation.None,
-  // animations: [
-  //   trigger('openClose', [
-  //     transition('closed => open', [
-  //       animate(
-  //         '4s',
-  //         keyframes([
-  //           style({ opacity: 1 }),
-  //           style({ transform: 'translate(0px)' }),
-  //         ])
-  //       ),
-  //     ]),
-  //     transition('open => closed', [
-  //       animate(
-  //         '4s',
-  //         keyframes([
-  //           style({ transform: 'translateY(300px)', offset: 0.5 }),
-  //           style({ opacity: 0, offset: 0.8 }),
-  //           style({ display: 'none', offset: 1 }),
-  //         ])
-  //       ),
-  //     ]),
-  //   ]),
-  // ],
 })
 export class QuizOneComponent implements OnInit {
   isOpen = false;
 
-  id: any = this.route.snapshot.paramMap.get('id');
-  List: Array<Questions> = this.service.ActualQuizzes[this.id].questions;
-  quizMeta = this.service.ActualQuizzes[this.id].meta;
+  id: string = this.route.snapshot.paramMap.get('id')!;
+  thisQuiz: Quiz = this.service.ActualQuizzes.filter(
+    (e) => e.meta.id === this.id
+  )[0];
+  List: Array<Questions> = this.thisQuiz.questions;
+  quizMeta = this.thisQuiz.meta;
   arrayAnswers: Array<string> = [];
   arrayCorrect: Array<string> = [];
   Counting: number = 0;
@@ -62,7 +33,6 @@ export class QuizOneComponent implements OnInit {
   // PUSH TO ARRAY
   push(ans: string, i: number) {
     this.arrayAnswers[i] = ans;
-    // console.log(this.List.length);
   }
   // Swap the answers
   SwapAns() {
@@ -165,13 +135,6 @@ export class QuizOneComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    // Id of subpage
-    console.log();
-    this.List = this.service.ActualQuizzes[this.id].questions;
-    this.id = this.route.snapshot.paramMap.get('id');
-
-    this.quizMeta = this.service.ActualQuizzes[this.id].meta;
-    console.log(this.List);
     this.SwapAns();
     this.Reordering();
   }

@@ -1,17 +1,19 @@
-import { onetofive } from './../data/data-type';
+import { Quiz } from './../../../data/data-type';
 import { Component, OnInit } from '@angular/core';
-import { quizzes } from '../data/examples-quiz';
-import { rateScore, Rating } from '../data/data-type';
+import { rateScore, Rating } from '../../../data/data-type';
 import { ActivatedRoute } from '@angular/router';
-import { ServiceQueService } from '../services/service-que.service';
+import { ServiceQueService } from '../../../services/service-que.service';
 @Component({
   selector: 'app-ratings',
   templateUrl: './ratings.component.html',
   styleUrls: ['./ratings.component.less'],
 })
 export class RatingsComponent implements OnInit {
-  id: any = this.route.snapshot.paramMap.get('id');
-  List: Array<Rating> = this.http.ActualQuizzes[this.id].rating;
+  id: string = this.route.snapshot.paramMap.get('id')!;
+  thisQuiz: Quiz = this.http.ActualQuizzes.filter(
+    (e) => e.meta.id === this.id
+  )[0];
+  List: Array<Rating> = this.thisQuiz.rating;
   isJustRate = false;
   commentForm: rateScore = {
     author: '',
@@ -29,14 +31,11 @@ export class RatingsComponent implements OnInit {
       alert('Too short comment and name of author');
       return;
     }
-    console.log(this.List);
+
     this.List.unshift(this.commentForm);
     this.isJustRate = true;
-    console.log(this.http.ActualQuizzes[this.id].rating[0].rate);
   }
   constructor(private route: ActivatedRoute, private http: ServiceQueService) {}
 
-  ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id');
-  }
+  ngOnInit(): void {}
 }

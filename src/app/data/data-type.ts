@@ -6,6 +6,7 @@ export interface Quiz {
 }
 
 interface Meta {
+  id: string;
   title: string;
   author: string;
   image?: string;
