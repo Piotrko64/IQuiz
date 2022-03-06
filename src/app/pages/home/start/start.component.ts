@@ -22,5 +22,7 @@ export class StartComponent {
   }
   lengthofList = this.service.ActualQuizzes.length;
   randomLinkQuiz =
-    './quiz-one/' + Math.floor(Math.random() * this.lengthofList);
+    './quiz-one/' +
+    this.service.ActualQuizzes[Math.floor(Math.random() * this.lengthofList)]
+      .meta.id;
 }

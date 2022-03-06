@@ -12,7 +12,7 @@ export class CreatingComponent implements OnInit {
   levels = ['easy', 'medium', 'hard'];
   newDate = new Date();
   checking = false;
-  newQuiz = './quiz-one/' + this.service.ActualQuizzes.length;
+
   oneQue = {
     question: '',
     answers: ['', '', '', ''],
@@ -54,6 +54,7 @@ export class CreatingComponent implements OnInit {
     rating: [],
     score: [],
   };
+  link = `/quiz-one/${this.baseData.id}`;
   addContainer() {
     this.ListQues.push(this.oneQue);
     setTimeout(() => {
@@ -66,7 +67,7 @@ export class CreatingComponent implements OnInit {
   receiveId() {
     this.baseData.id =
       this.baseData.title[0] +
-      this.newDate.getTime +
+      this.newDate.getTime() +
       this.baseData.levelDifficulty[0] +
       Math.round(Math.random() * 999);
   }
@@ -79,7 +80,7 @@ export class CreatingComponent implements OnInit {
   }
   Valid(e: any): boolean {
     if (e.invalid) {
-      alert('Oops... Check if you filled in the form correctly!');
+      alert('Oops... Remember about base informations');
       return false;
     } else if (this.ListQues.some((e) => e.answers.indexOf('') !== -1)) {
       alert('Remember about all answers!!!');
@@ -119,8 +120,8 @@ export class CreatingComponent implements OnInit {
     this.receiveId();
     if (this.Valid(e)) {
       this.service.ActualQuizzes.push(this.Alldata);
-
-      alert('Quiz is added! Come to HomePage!');
+      console.log(this.link);
+      alert('Quiz is added! Let`s go!');
       window.scroll(0, 0);
     }
   }
