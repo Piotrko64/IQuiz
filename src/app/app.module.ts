@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
 import { CreatingComponent } from './pages/creating/creating.component';
 import { GoQuizComponent } from './pages/TakeTheQuiz/go-quiz/go-quiz.component';
 import { FormsModule } from '@angular/forms';
+import { ScullyLibModule } from '@scullyio/ng-lib';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatRadioModule } from '@angular/material/radio';
@@ -42,6 +43,7 @@ import { MatRadioModule } from '@angular/material/radio';
     BrowserModule,
     MatButtonToggleModule,
     MatRadioModule,
+    ScullyLibModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
