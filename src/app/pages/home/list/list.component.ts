@@ -1,11 +1,29 @@
 import { ServiceQueService } from '../../../services/service-que.service';
 import { Quiz } from '../../../data/data-type';
 import { Component, Input, OnInit } from '@angular/core';
-
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+} from '@angular/animations';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.less'],
+  animations: [
+    trigger('fade', [
+      state(
+        'void',
+        style({
+          transform: `translateX(-100%)`,
+        })
+      ),
+      transition('void=>*', [animate(300)]),
+      transition('*=>void', [animate(300)]),
+    ]),
+  ],
 })
 export class ListComponent implements OnInit {
   constructor(private service: ServiceQueService) {}

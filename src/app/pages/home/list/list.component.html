@@ -7,7 +7,11 @@
     [(ngModel)]="binding"
   />
   <h1 *ngIf="copyList.length == 0">NO RESULTS</h1>
-  <article class="article__for" *ngFor="let el of copyList; let i = index">
+  <article
+    class="article__for"
+    @fade
+    *ngFor="let el of copyList; let i = index"
+  >
     <img src="{{ el.meta.image }}" alt="" />
     <div class="article__describe">
       <h1>
