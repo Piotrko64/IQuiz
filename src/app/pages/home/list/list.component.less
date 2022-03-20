@@ -1,12 +1,13 @@
-@black: rgba(35, 24, 33, 1);
-@blackless: rgb(46, 46, 46);
-@favourite: #d9008f;
-@favless: rgba(217, 0, 145, 0.25);
-@white: white;
-@whiteless: rgba(255, 255, 255, 0.25);
+@import "../../../styles/variable.less";
 .article {
   background: @black;
   padding: 5px;
+  h1 {
+    text-align: center;
+    color: white;
+    font-size: 3rem;
+    font-weight: 400;
+  }
   .article__search {
     transition: all 0.2s ease;
     transform: translateX(-100vw);

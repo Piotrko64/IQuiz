@@ -37,7 +37,7 @@ export class ListComponent implements OnInit {
   }
 
   filter() {
-    console.log(this.List, 'aaa', this.copyList);
+    console.log(this.copyList);
     this.copyList = this.List.filter((f) => {
       if (
         f.meta.author.toUpperCase().indexOf(this.binding.toUpperCase()) !==
