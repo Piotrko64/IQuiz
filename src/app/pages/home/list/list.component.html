@@ -3,14 +3,14 @@
     class="article__search"
     [ngClass]="{ active: search }"
     placeholder="Find a quiz!"
-    (input)="filter()"
-    [(ngModel)]="binding"
+    (input)="bind$.next($any($event.target).value)"
+    #input
   />
-  <h1 *ngIf="copyList.length == 0">NO RESULTS</h1>
+  <h1 *ngIf="(filterList$ | async)?.length == 0">NO RESULTS</h1>
   <article
     class="article__for"
     @fade
-    *ngFor="let el of copyList; let i = index"
+    *ngFor="let el of filterList$ | async; let i = index"
   >
     <img src="{{ el.meta.image }}" alt="" />
     <div class="article__describe">

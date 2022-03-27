@@ -16,9 +16,12 @@ export class StartComponent {
   }
   @ViewChild('scroll', { read: ElementRef }) scroll: ElementRef | undefined;
   searching(e: any) {
-    this.scroll?.nativeElement.scrollIntoView({ behavior: 'smooth' });
-
     this.search = true;
+    const input = document.querySelector(
+      '.article__search'
+    ) as HTMLInputElement;
+    input.focus();
+    this.scroll?.nativeElement.scrollIntoView({ behavior: 'smooth' });
   }
   lengthofList = this.service.ActualQuizzes.length;
   randomLinkQuiz =

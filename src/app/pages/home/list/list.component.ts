@@ -1,5 +1,7 @@
 import { ServiceQueService } from '../../../services/service-que.service';
 import { Quiz } from '../../../data/data-type';
+import { ElementRef, ViewChild } from '@angular/core';
+import { delay, of } from 'rxjs';
 import { Component, Input, OnInit } from '@angular/core';
 import {
   trigger,
@@ -8,6 +10,7 @@ import {
   animate,
   transition,
 } from '@angular/animations';
+import { Subject } from 'rxjs';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -20,7 +23,7 @@ import {
           transform: `translateX(-100%)`,
         })
       ),
-      transition('void=>*', [animate(300)]),
+      transition('void=>*', [animate(500)]),
       transition('*=>void', [animate(300)]),
     ]),
   ],
@@ -32,8 +35,9 @@ export class ListComponent implements OnInit {
   binding = '';
 
   List = this.service.ActualQuizzes;
+  bind$ = new Subject();
+  filterList$ = of(this.List);
 
-  copyList: Quiz[] = this.List;
   rate = [1, 2, 3, 4, 5];
   coloring = {
     easy: 'yellow',
@@ -54,30 +58,33 @@ export class ListComponent implements OnInit {
     return Math.ceil(countRate);
   }
 
-  filter() {
-    console.log(this.copyList);
-    this.copyList = this.List.filter((f) => {
-      if (
-        f.meta.author.toUpperCase().indexOf(this.binding.toUpperCase()) !==
-          -1 ||
-        f.meta.title.toUpperCase().indexOf(this.binding.toUpperCase()) !== -1 ||
-        f.meta.describe?.toUpperCase().indexOf(this.binding.toUpperCase()) !==
-          -1 ||
-        f.meta.levelDifficulty
-          .toUpperCase()
-          .indexOf(this.binding.toUpperCase()) !== -1
-      ) {
-        return f;
-      }
-      if (this.binding == '') {
-        return f;
-      }
-      return;
-    });
+  filter(s: Event) {
+    const target = s.target as HTMLInputElement;
+    this.bind$.next(target.value);
   }
 
   ngOnInit(): void {
-    this.copyList = this.List;
+    this.bind$.pipe(delay(300)).subscribe({
+      next: (e: any) => {
+        this.filterList$ = of(
+          this.List.filter((f) => {
+            const { author, title, describe, levelDifficulty } = f.meta;
+            if (
+              author.toUpperCase().indexOf(e.toUpperCase()) !== -1 ||
+              title.toUpperCase().indexOf(e.toUpperCase()) !== -1 ||
+              describe?.toUpperCase().indexOf(e.toUpperCase()) !== -1 ||
+              levelDifficulty.toUpperCase().indexOf(e.toUpperCase()) !== -1
+            ) {
+              return f;
+            }
+            if (e == '') {
+              return f;
+            }
+            return;
+          })
+        );
+      },
+    });
 
     this.CountRate(0);
   }
