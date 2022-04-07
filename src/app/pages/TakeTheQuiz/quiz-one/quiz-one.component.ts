@@ -1,4 +1,4 @@
-import { Quiz } from './../../../data/data-type';
+import { Quiz } from '../../../data/data-type';
 import { ActivatedRoute } from '@angular/router';
 
 import { ViewEncapsulation } from '@angular/core';
@@ -42,7 +42,6 @@ export class QuizOneComponent implements OnInit {
       const swapAns = this.List[s].answers[random1];
       this.List[s].answers[random1] = this.List[s].answers[random2];
       this.List[s].answers[random2] = swapAns;
-      console.log(random1, random2);
     }
   }
   // reordering of questions

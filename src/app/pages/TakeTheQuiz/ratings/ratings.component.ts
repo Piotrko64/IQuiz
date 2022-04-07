@@ -1,4 +1,4 @@
-import { Quiz } from './../../../data/data-type';
+import { Quiz } from '../../../data/data-type';
 import { Component, OnInit } from '@angular/core';
 import { rateScore, Rating } from '../../../data/data-type';
 import { ActivatedRoute } from '@angular/router';

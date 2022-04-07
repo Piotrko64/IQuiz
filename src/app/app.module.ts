@@ -1,6 +1,6 @@
-import { RatingsComponent } from './pages/TakeTheQuiz/ratings/ratings.component';
+import { RatingsComponent } from './pages/takeTheQuiz/ratings/ratings.component';
 
-import { QuizOneComponent } from './pages/TakeTheQuiz/quiz-one/quiz-one.component';
+import { QuizOneComponent } from './pages/takeTheQuiz/quiz-one/quiz-one.component';
 import { ListComponent } from './pages/home/list/list.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,7 +13,7 @@ import { StartComponent } from './pages/home/start/start.component';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { CreatingComponent } from './pages/creating/creating.component';
-import { GoQuizComponent } from './pages/TakeTheQuiz/go-quiz/go-quiz.component';
+import { GoQuizComponent } from './pages/takeTheQuiz/go-quiz/go-quiz.component';
 import { FormsModule } from '@angular/forms';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';

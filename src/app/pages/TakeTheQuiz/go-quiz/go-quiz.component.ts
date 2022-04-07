@@ -1,4 +1,4 @@
-import { Quiz } from './../../../data/data-type';
+import { Quiz } from '../../../data/data-type';
 import { ServiceQueService } from '../../../services/service-que.service';
 
 import { Component, OnInit } from '@angular/core';

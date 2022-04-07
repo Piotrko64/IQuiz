@@ -2,7 +2,7 @@ import { StartComponent } from './pages/home/start/start.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { GoQuizComponent } from './pages/TakeTheQuiz/go-quiz/go-quiz.component';
+import { GoQuizComponent } from './pages/takeTheQuiz/go-quiz/go-quiz.component';
 import { CreatingComponent } from './pages/creating/creating.component';
 const routes: Routes = [
   { path: '', component: StartComponent },
