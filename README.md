@@ -6,12 +6,12 @@
 This is my first web app with Angular. I wanted create simple app to make and made quizzes.
 Actually this is early version of this app. Remember that this is only front side app. 
 If you create new quiz remember that this quiz will be delete when you refresh page.
-However! If you would like give your quiz to my app you  can create json file of this quiz
-and send me on email: frontflexemail@gmail.com
+However! If you would like give your quiz to my app you  can **create json file** of this quiz
+and send me on email: **frontflexemail@gmail.com**
 
 ![image](https://user-images.githubusercontent.com/77500425/156828938-960385b2-7713-437a-a5d0-b1712aab5f6c.png)
 
-If you use git clone remember about use also npm install and npm start :)
+If you use **git** clone remember about use also **npm install** and **npm start** :)
  
 
 
