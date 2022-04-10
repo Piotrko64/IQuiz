@@ -11,7 +11,7 @@ and send me on email: **frontflexemail@gmail.com**
 
 ![image](https://user-images.githubusercontent.com/77500425/156828938-960385b2-7713-437a-a5d0-b1712aab5f6c.png)
 
-If you use **git** clone remember about use also **npm install** and **npm start** :)
+If you use **git clone** remember about use also **npm install** and **npm start** :)
  
 
 
